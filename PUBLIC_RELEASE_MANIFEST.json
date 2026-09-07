@@ -3,8 +3,8 @@
   "status": "SANITIZED_PUBLIC_CANDIDATE",
   "team_and_model_risk_owner": "Ha Cong Nguyen",
   "repository": "https://github.com/hanoipho997/hsbc-phase1-r3",
-  "doi": "PENDING",
-  "scientific_content_commit": "PENDING",
+  "doi": "10.5281/zenodo.22650874",
+  "scientific_content_commit": "0bb260f21814a2d2aed9c1b3b5cf53b0d6e87cf0",
   "private_monorepo_history_included": false,
   "private_or_row_level_files_included": false,
   "excluded_classes": [
@@ -17,8 +17,8 @@
   "files": [
     {
       "path": "CITATION.cff",
-      "sha256": "e8c188dbb27502e9a2b66db7bc276b21f845edca1b6658aea48e9a1e855ac7ab",
-      "bytes": 420,
+      "sha256": "8a381fc790812e4121da8e53391aa7e86450d6154e48a3a10f185c1ed66efe4e",
+      "bytes": 469,
       "classification": "SOURCE_OR_REPORT"
     },
     {
@@ -59,20 +59,20 @@
     },
     {
       "path": "docs/hsbc_challenge_phase1_proposal.md",
-      "sha256": "33727d0562688bb435b2477ebe0c75ab18d13061101654a7c08bf1a791ab90b4",
-      "bytes": 24843,
+      "sha256": "86d32a99ee46c9d601ca626d7534b4667f36b204ed86540ccc990f5772ae2477",
+      "bytes": 24825,
       "classification": "SOURCE_OR_REPORT"
     },
     {
       "path": "docs/hsbc_challenge_phase1_proposal.pdf",
-      "sha256": "5d06a98b2d1ed618ebdeb368bc14001dde584700f8a4e690e1b6661a8b7f4d6a",
-      "bytes": 102845,
+      "sha256": "9500bd3bcdd1c69b15317367e15e1a3e4618e104db6721840b8d083297e9f19a",
+      "bytes": 103180,
       "classification": "SOURCE_OR_REPORT"
     },
     {
       "path": "docs/hsbc_challenge_phase1_proposal.tex",
-      "sha256": "6af00fc6e01af6ab0fedd78002c73d73ff90128de348ee034eaf104f4973e94f",
-      "bytes": 21168,
+      "sha256": "74c2419215dce26179cc2beb73b34c1eaced96bcb1209944f998c3d7d97e8779",
+      "bytes": 21270,
       "classification": "SOURCE_OR_REPORT"
     },
     {

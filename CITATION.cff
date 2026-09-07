@@ -6,7 +6,7 @@ authors:
   - family-names: Nguyen
     given-names: Ha Cong
 repository-code: 'https://github.com/hanoipho997/hsbc-phase1-r3'
-doi: 'PENDING'
-commit: 'PENDING'
+doi: '10.5281/zenodo.22650874'
+commit: '0bb260f21814a2d2aed9c1b3b5cf53b0d6e87cf0'
 version: 'Revision 3'
 date-released: '2026-09-08'

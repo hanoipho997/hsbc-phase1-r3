@@ -329,9 +329,9 @@ before any production influence. Affiliation, short biography and publication
 list must be supplied in the submission form if that form requires them.
 
 **Release record:** public repository
-`https://github.com/hanoipho997/hsbc-phase1-r3`. The immutable
-scientific-content commit and DOI are recorded in the final metadata commit
-after the sanitized Zenodo record is reserved.
+`https://github.com/hanoipho997/hsbc-phase1-r3`; immutable scientific-content
+commit `0bb260f21814a2d2aed9c1b3b5cf53b0d6e87cf0`; DOI
+`10.5281/zenodo.22650874`.
 
 ---
 
@@ -435,8 +435,9 @@ promise.
     documentation, accessed 2026-09-04.
 
 Source lock: Engine-A implementation/evidence commit `5242b2d`; Revision 2
-base commit `2fe355f`. The sanitized Revision-3 scientific-content commit and
-DOI are recorded in the final metadata commit and archive.
+base commit `2fe355f`; sanitized Revision-3 scientific-content commit
+`0bb260f21814a2d2aed9c1b3b5cf53b0d6e87cf0`; DOI
+`10.5281/zenodo.22650874`.
 
 # Appendix C — Reproducibility and release status
 
