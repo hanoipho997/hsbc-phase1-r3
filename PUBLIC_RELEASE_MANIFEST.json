@@ -1,0 +1,529 @@
+{
+  "schema": "hsbc-revision3-public-release-manifest-v1",
+  "status": "SANITIZED_PUBLIC_CANDIDATE",
+  "team_and_model_risk_owner": "Ha Cong Nguyen",
+  "repository": "https://github.com/hanoipho997/hsbc-phase1-r3",
+  "doi": "PENDING",
+  "scientific_content_commit": "PENDING",
+  "private_monorepo_history_included": false,
+  "private_or_row_level_files_included": false,
+  "excluded_classes": [
+    "IEEE-CIS rows and labels",
+    "transformed row arrays and prediction arrays",
+    "serialized models and preprocessors",
+    "NPZ, NPY, Joblib, Parquet, CSV, pickle and model files",
+    "the internal manifest that names/hashes private row-bearing files"
+  ],
+  "files": [
+    {
+      "path": "CITATION.cff",
+      "sha256": "e8c188dbb27502e9a2b66db7bc276b21f845edca1b6658aea48e9a1e855ac7ab",
+      "bytes": 420,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e3f52406c7f53c33a388afafafa35c22ab10fd7e851cb82c2e3593c659db7ff7",
+      "bytes": 1962,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_audit_report_v1.md",
+      "sha256": "a68d2c04de08a18ca69a5ddbb2981dabd94c34a35f9dd883e44e9f50e4edf24f",
+      "bytes": 58412,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_audit_report_v2.md",
+      "sha256": "dc8150db1d63ac3a5fb7fa885e8f6592447c51c0ebdb06c7d7b5fdf8813068c1",
+      "bytes": 71643,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_claude_novelty_dossier_v2.md",
+      "sha256": "9fcbc0e67e572c50c72d13deb94641a6cc99ba9d68de4bc2844f9ccf08df6ab9",
+      "bytes": 19535,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_dephasing_witness_analysis_amendment_v2.md",
+      "sha256": "e76c7c9583084a80ecc2007254ee8b860344dd1da04cd02be09d66d04d693566",
+      "bytes": 7135,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_frozen_mixer_preregistration_v1.md",
+      "sha256": "b51ebbe2bd98e7e96258bcb414284b69bf7a8557108a023aca10382761ff8f16",
+      "bytes": 4202,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_phase1_proposal.md",
+      "sha256": "33727d0562688bb435b2477ebe0c75ab18d13061101654a7c08bf1a791ab90b4",
+      "bytes": 24843,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_phase1_proposal.pdf",
+      "sha256": "5d06a98b2d1ed618ebdeb368bc14001dde584700f8a4e690e1b6661a8b7f4d6a",
+      "bytes": 102845,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_phase1_proposal.tex",
+      "sha256": "6af00fc6e01af6ab0fedd78002c73d73ff90128de348ee034eaf104f4973e94f",
+      "bytes": 21168,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_public_release_policy_v1.md",
+      "sha256": "e4056472f17e743ba15028b50a6fff9f848fe34185569a8a8a8d8749c3a1076a",
+      "bytes": 2063,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_quantum_rivals_audit_v2.md",
+      "sha256": "de10a4640e310986ea94ed52a35a7edba2bb32fceac7e84116dc2c0bc5ebc115",
+      "bytes": 13635,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_quantum_rivals_results_v2.md",
+      "sha256": "a9f6eeefbaa96fdb5cbda883960c4070983276950316e8e29e3c0df91c032875",
+      "bytes": 9244,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_revision3_output_protocol_v1.md",
+      "sha256": "3a6547b86a632268e926a7de484a101e08fe46fc7ff59fe11b5bdc0e37dc8236",
+      "bytes": 2770,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_challenge_revision3_release_notes.md",
+      "sha256": "2baee9dec635f3baa83a7ccb87d0e8a48f20371c74596475b58b29b838f41579",
+      "bytes": 1033,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_engine_a_preregistration_v1.md",
+      "sha256": "0d9825231ca590baf7d9cb12b9d28958a7ac3b4eff42fac5f6af609f746102a8",
+      "bytes": 18576,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_engine_a_report_v1.md",
+      "sha256": "f638c41735b2a4a6c598f26c4a62b4ef9e415464be58a6f1b0838c817cd29945",
+      "bytes": 5594,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_lcu_qng_theory_note.pdf",
+      "sha256": "2c056c0d7e6587638a7b47e3c4400c5db78db260139e344e2489ec75d3b8dfc4",
+      "bytes": 340110,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "docs/hsbc_lcu_qng_theory_note.tex",
+      "sha256": "21b2bbd0bc24b0b7f3d6043253cb62ed7af00ca29bd51167707b9fd70c21aad3",
+      "bytes": 37529,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_report_v2/frozen_mixer_v1.json",
+      "sha256": "2501be64a309c8a12a5b03712175ca6a364f960ccd230f3b4b3240e07c8903a4",
+      "bytes": 108483,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/audit_manifest_v1.json",
+      "sha256": "8e765ca8b196c92127b3e023d3c355bf26afbfb3debf635235d77c1caa55c8cb",
+      "bytes": 1610,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/baseline_reproduction_v1.json",
+      "sha256": "656feb2a91bd5ccf76619587c1d588844e08db44cba838658cc42f50f7b3f1ce",
+      "bytes": 2057,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/improvements_regimes_v1.json",
+      "sha256": "ca03262b22d7f494cd50ab527eee31df9cb2e59d7cea782d4da349c9524fab96",
+      "bytes": 36534,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/occ_tournament_v1.json",
+      "sha256": "75a9e7e793a002ed734a7c6859c48ba19299aaf65698e31ea60039abe65f5e02",
+      "bytes": 43629,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/priority_attacks_v1.json",
+      "sha256": "efb2d2319a819f8ff84722ec9dede30c1fba2cfc33612073f296a76f1d8a9678",
+      "bytes": 31545,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v1/sparkov_v1.json",
+      "sha256": "ef17bd0507173517f4771a5b43b14b7cc65e4a834f25e3fda560f1daf982a7f2",
+      "bytes": 2474,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/audit_v2/quantum_rivals_v2_combined.json",
+      "sha256": "f0b0cdcdd3d035154c95dfbf1def08138842bd90297f2f638dac9653b66c9541",
+      "bytes": 13139,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/ingest_manifest_v1.json",
+      "sha256": "2c9174ea4b1343d3058f0a77a7ab92161bcc3fdf3098f0f5e2847b9d4d41a6b3",
+      "bytes": 925,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/routing_freeze_v1.json",
+      "sha256": "270b75eb2b9d35526cc9b31fd6970f36d95a823acda2f09174a8e5d6179a0a8a",
+      "bytes": 1467,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/unblind_real_v1.json",
+      "sha256": "dc4654df508c57de5e838c5641a929d91582bb1d7c43baf43de1abf7555ecac7",
+      "bytes": 2621,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/unblind_rehearsal_v1.json",
+      "sha256": "cc51d1d0e68969129621b2c8a071e2bc7dd3c4f6d368416dcdb5acab24016a86",
+      "bytes": 2623,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/verify_crossview_v1.json",
+      "sha256": "30180e60451da4e4cebaae38832ad77e2ef1311c6bd439141f9c5e3da9791a46",
+      "bytes": 836,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/verify_syndrome_v1.json",
+      "sha256": "38a740460eb90d5469824d7be61442a927b3f396b38957b00137d0039694b97b",
+      "bytes": 892,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/engine_a_v1/views_summary_v1.json",
+      "sha256": "eab4501c4910fe5a2f3da8e9f8a47ad0acd39915664c1ea09318328e0f5902e0",
+      "bytes": 3016,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/novelty_v1/gradient_recycling_v1.json",
+      "sha256": "7859e32053190a0bfd94a2bb0ec0316ba67238d3fbddb3c0b344fe31204c912c",
+      "bytes": 11853,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/novelty_v1/native_compile_v1.json",
+      "sha256": "da86e4f0cf8a4b6a0b4d69fe21653a2080c993d149be63ed4dedafd14a57f8d9",
+      "bytes": 20746,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/novelty_v1/native_compile_v1b.json",
+      "sha256": "42b8098b396d1fe1b48ec19beb02272f0a3747dbc1940c4d9c4ae681ca9db13d",
+      "bytes": 47732,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/novelty_v2/dephasing_uncertainty_v2.json",
+      "sha256": "556c37c728ae9f437b793167204ea151bf7df34278d19727146dd54aeefe4f55",
+      "bytes": 6749,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/novelty_v2/isolated_gradient_reproduction_v2.json",
+      "sha256": "b8a3d711377709ca5c93a47b06795d9d8c1f5e8330ba08a4e365c6ec16937367",
+      "bytes": 914,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "runs/hsbc_challenge/revision3_v1/output_completeness_v1.json",
+      "sha256": "a353b451873f5931fffd6a4b9a62754c9b3dd1ffe2e2260da6541d87680a65d5",
+      "bytes": 4715,
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_dephasing_uncertainty_v2.py",
+      "sha256": "daf3001f6f33b9a6dd504900f5305f2d20fc602860518d07afbaf54ee3af6846",
+      "bytes": 11641,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_frozen_mixer_v1.py",
+      "sha256": "cd77218a9b3dedfd8d1e95d46c8139f3905a30cb2c071d9f6b8430acff418393",
+      "bytes": 18875,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_hybrid_qml_v2.py",
+      "sha256": "a3b2fce85e80e64457fbdd17511cb7b8ae70eacdfd312508f06dd102ab62885e",
+      "bytes": 81647,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_improvements_regimes_v1.py",
+      "sha256": "c51c683a339a62b5c17923910a1d37f186da21731cc790bfc5b3e9ee30bed324",
+      "bytes": 20535,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_occ_tournament_v1.py",
+      "sha256": "4f7061f0e55bc42d32d3bf8ff039101fdce8d92f131abcba152f62bcc11b686f",
+      "bytes": 33360,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_priority_attacks_v1.py",
+      "sha256": "f7e82da19395e16b488ab7d4b046f41fd58add28f26fc81b5819c46a9c0c29bd",
+      "bytes": 29615,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_quantum_kernels_v2.py",
+      "sha256": "51606793c259b59a025dac903267542c584cbcd35631302e93c1fca0080ffcf7",
+      "bytes": 139585,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_reproduction_compare_v1.py",
+      "sha256": "4159829ef62e057d8b62cdc84c2dd08f4ad3994983064ae09e4a15ae6ee996da",
+      "bytes": 4436,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_sparkov_v1.py",
+      "sha256": "11f6eae0093eda0f7ac108fad81076fd851cadc33f4b037156720dd65bc8db7a",
+      "bytes": 12331,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/audit_vqa_qae_v2.py",
+      "sha256": "3c9776d25c9d1c0496ea91645d3b3ab56b9d696c6cb4404148c2291eb941dd58",
+      "bytes": 68538,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/diagnose_engine_a_noise_head_v2.py",
+      "sha256": "18ed91eda3443e8be82eb3da0c029449f48192e4401483347e399c708461c43f",
+      "bytes": 3100,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/diagnose_rival_score_polarity_v2.py",
+      "sha256": "3913d5c79afa1ee38598f0cb52f3f442b61c13990898abb15353c3a4f1445f3e",
+      "bytes": 4280,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_arms_v1.py",
+      "sha256": "56f8cfabc5b307ecd0e0f4432950658d29f7878520ae089de201308eba6e8af4",
+      "bytes": 9982,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_backbone_v1.py",
+      "sha256": "43e7f264a150d691fd8e8d3b975b646106212e9d3e59f66dbb6bca046a6dd522",
+      "bytes": 7011,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_backbone_vm_v1.py",
+      "sha256": "4d6c5b9fd8ba896d037888e088270a98c158cfd6f6e2d6519e22b9fa304edee2",
+      "bytes": 7577,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_ingest_v1.py",
+      "sha256": "0f48d77760e6495881ae56578c312806f61fc4c881e16cf6e5307bb8ffef3166",
+      "bytes": 4451,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_oof_vm_v1.py",
+      "sha256": "b3e723768b8558dd2680cfbbe456817d8658dc1e79134ea1635b153869a145cc",
+      "bytes": 5082,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_unblind_v1.py",
+      "sha256": "a33672b85115d4b1833c4096a92e9ea2c02a060162d2868edeac4f2b22923969",
+      "bytes": 11628,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/engine_a_views_v1.py",
+      "sha256": "859e2276f6805e124564ed1ee8a3475992a8c73a2142d7ee4ffd719cefb27376",
+      "bytes": 4462,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_b2_addendum.py",
+      "sha256": "0b2059872055e2c1f9a3f306661e1e2d5b4e54f1bcddc6adb14baedf3b4b50d5",
+      "bytes": 5998,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_b_scorer.py",
+      "sha256": "bf003a99d4360e5d683545e33f7ad45468d7223af864511305c0886c3d1df79d",
+      "bytes": 14904,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_c_dequantization.py",
+      "sha256": "56d03e4a0254eb3b7c1a9dbf1ec306867f1f6f77485dff1da30e97cea303b7ac",
+      "bytes": 6377,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_d_alignment.py",
+      "sha256": "11e2b923aafc1e70596ff333fcb0f996f605fa35d6d0fac4e4d086bb5e744979",
+      "bytes": 11601,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_e_depth.py",
+      "sha256": "c94d1eeca82eaea27553b3db6d8ad892da3a80af14778198db2093e5e7581496",
+      "bytes": 10948,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/exp_f_bottlenecks.py",
+      "sha256": "4407763bac8884603ba5b173ae1e1a989ecbdeee6fe85848c99612df3a88436b",
+      "bytes": 14084,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/finalize_quantum_rivals_v2.py",
+      "sha256": "8ea590c56f3d56333d6bdb0e5db6e23ec8c4fa2a777acb8e1c35b4d0f6b31e62",
+      "bytes": 8985,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/harden_quantum_rivals_stats_v2.py",
+      "sha256": "510309303a29c790e54c1d859cf8388eae5277e7d6998fcb563d25ad77d11fbe",
+      "bytes": 12529,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/hsbc_common.py",
+      "sha256": "8623715b486de24a6e143411249679bede20a22c3282ba518c096b1f11e1d2ec",
+      "bytes": 35965,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_braket_local_dm_v1.py",
+      "sha256": "2b88ab7d8d41767f7ae3b1e9c8df3cce34f84097b1fd0d5c2ad283b9a0e0595c",
+      "bytes": 8212,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_common_v1.py",
+      "sha256": "8e525d9f4dea76690468a78faf3283bb680b0e9923094330f81353547690b350",
+      "bytes": 12669,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_dephasing_witness_v1.py",
+      "sha256": "59cf045d77691be8dcc266fc78f401e74b8773b4cbd61cc80dc85041d321b9bf",
+      "bytes": 23703,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_gradient_recycling_v1.py",
+      "sha256": "fea596704dd17a07d3816f9b8650740139cab544544e94389ce37d2b1ec3659c",
+      "bytes": 15097,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_native_compile_v1.py",
+      "sha256": "25f50ab97ac3ea6464072fa53c55ce082d182a65b3c348d6e4e17f29d43250c9",
+      "bytes": 12795,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_native_compile_v1b.py",
+      "sha256": "fa3478633a8a2a42af225de2210e8c12d4e62cd6956244383f6e9aa06a764d75",
+      "bytes": 9639,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_splice_ablation_v1.py",
+      "sha256": "c9d9ddde5ef62ac372f513f367c35ac3923347204640f9c3d481eedb207a685c",
+      "bytes": 11942,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/novelty_syndrome_drift_v1.py",
+      "sha256": "99b667c3e0c632753b26fac31477d5f09cffadf7b7a7dfe336d4761ff8021a8f",
+      "bytes": 6970,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/report_revision3_outputs_v1.py",
+      "sha256": "adfbd6a2982ca10c83a0eda1fa8a0a7a606699d1681cbd59b94ebcd00f64c1ef",
+      "bytes": 11210,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/reproduce_audit_inputs_isolated_v2.py",
+      "sha256": "4541c95b42a50416f7ccaa446d54085c794cda9f80a174303faff1a2085aee33",
+      "bytes": 6405,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/reproduce_claude_novelty_isolated_v2.py",
+      "sha256": "49c41f38b50e84f5be1a61710dce120d4778763b3498448a10ae41068402b627",
+      "bytes": 6833,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/requirements_audit_v2.txt",
+      "sha256": "4e5f66bf8d6a934ba48eacf553a332783ea6fb0e12f44f1c253b51a2a3730d6d",
+      "bytes": 312,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/requirements_braket_novelty_v2.txt",
+      "sha256": "a9fb51603935f03aff6fc5afe6a8a0204eb855ea24d348eff9ec53b4e45f37d8",
+      "bytes": 300,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/verify_claude_novelty_package_v2.py",
+      "sha256": "2e79b087d7eebe59296d8630bac627966d140a004217ca9ba0f95161b71f07e3",
+      "bytes": 3154,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/verify_crossview_v1.py",
+      "sha256": "fbdaf9aaa0948f4a47b77ee1d5066810fc6898b2572a456780c1d28d8505bdfe",
+      "bytes": 10784,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "scripts/hsbc_challenge/verify_syndrome_v1.py",
+      "sha256": "0e6b31af8ca104053b2b72d2d597356192ee4d5cd94236b98182bf1035602c3f",
+      "bytes": 9799,
+      "classification": "SOURCE_OR_REPORT"
+    },
+    {
+      "path": "verify_public_release_v1.py",
+      "sha256": "86d6bdd6f5e0135a5635f00f280002694d2a3bf1672cb396a65f6a2b368719ef",
+      "bytes": 3439,
+      "classification": "SOURCE_OR_REPORT"
+    }
+  ]
+}

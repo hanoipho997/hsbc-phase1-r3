@@ -1,0 +1,61 @@
+{
+  "backbone": {
+    "best_xgb": {
+      "key": "xgb_d10_lr0.05_s0.9_c0.9_wbal",
+      "val_auprc": 0.6386036033349183
+    },
+    "best_lgb": {
+      "key": "lgb_d10_lr0.02_s0.7_c0.9_w1",
+      "val_auprc": 0.6267579814656411
+    },
+    "mean_val_auprc": 0.6519534552833636,
+    "choice": "mean",
+    "val_auprc": 0.6519534552833636
+  },
+  "routing_thresholds": {
+    "t_lo_val_q988": 0.8786358168064351,
+    "t_hi_val_q998": 0.9941770366666827
+  },
+  "val_pool": {
+    "rows": 1181,
+    "frauds": 1084,
+    "fraud_rate": 0.9178662150719729
+  },
+  "val_autoflag": {
+    "rows": 237,
+    "frauds": 223
+  },
+  "power_precheck": {
+    "predicted_test_pool_frauds": 1084,
+    "floor": 40,
+    "pass": true
+  },
+  "crosscheck_cells": 15,
+  "crosscheck_max_abs_diff": 0.007940471961916606,
+  "val_pool_coprimary_headroom": {
+    "K=100": {
+      "backbone_top_K_frauds": 91,
+      "max_possible": 100,
+      "headroom_frauds": 9,
+      "headroom_recall_pp": 0.1951854261548471
+    },
+    "K=200": {
+      "backbone_top_K_frauds": 178,
+      "max_possible": 200,
+      "headroom_frauds": 22,
+      "headroom_recall_pp": 0.4771199306007374
+    },
+    "K=400": {
+      "backbone_top_K_frauds": 360,
+      "max_possible": 400,
+      "headroom_frauds": 40,
+      "headroom_recall_pp": 0.8674907829104316
+    },
+    "K=800": {
+      "backbone_top_K_frauds": 742,
+      "max_possible": 800,
+      "headroom_frauds": 58,
+      "headroom_recall_pp": 1.2578616352201257
+    }
+  }
+}

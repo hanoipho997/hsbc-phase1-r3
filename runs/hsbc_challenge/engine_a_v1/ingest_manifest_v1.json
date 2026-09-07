@@ -1,0 +1,43 @@
+{
+  "prereg": "docs/hsbc_engine_a_preregistration_v1.md (v1 + A1)",
+  "unlabeled_competition_files_used": false,
+  "rows_total": 590540,
+  "boundaries": {
+    "b1_train_end": 354324,
+    "b2_val_end": 472432,
+    "test_rows": 118108
+  },
+  "last_preteset_TransactionDT": 12192842,
+  "train": {
+    "rows": 354324,
+    "frauds": 11988,
+    "fraud_rate": 0.03383344057980831,
+    "dt_range": [
+      86400,
+      8745772
+    ]
+  },
+  "val": {
+    "rows": 118108,
+    "frauds": 4611,
+    "fraud_rate": 0.03904053916754157,
+    "dt_range": [
+      8745798,
+      12192842
+    ]
+  },
+  "test": {
+    "rows": 118108,
+    "note": "SEALED - no statistics computed at ingest"
+  },
+  "columns": 434,
+  "versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6"
+  },
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

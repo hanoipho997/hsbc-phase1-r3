@@ -1,0 +1,92 @@
+{
+  "cross_dataset_transfer": {
+    "Sparkov_to_ULB": {
+      "auc_roc": 0.6620771313365794,
+      "auprc": 0.004262601577481593
+    },
+    "ULB_to_Sparkov": {
+      "auc_roc": 0.85150687219426,
+      "auprc": 0.05374346897099499
+    },
+    "scope": "weak semantic overlap only; ULB PCA features have no Sparkov counterpart",
+    "shared_features": [
+      "log_amount",
+      "hour_sin",
+      "hour_cos"
+    ]
+  },
+  "features": [
+    "log_amount",
+    "hour_sin",
+    "hour_cos",
+    "age_years",
+    "log_distance_km",
+    "log_city_population",
+    "legit_category_frequency",
+    "legit_card_amount_deviation"
+  ],
+  "methods": {
+    "IsolationForest": {
+      "auc_roc": 0.8629100665063337,
+      "auprc": 0.06399469583340174
+    },
+    "S1": {
+      "auc_roc": 0.46712502573760506,
+      "auprc": 0.0062007800779439685
+    },
+    "XGB_subset": {
+      "auc_roc": 0.9976079512573278,
+      "auprc": 0.872077280779986
+    }
+  },
+  "protocol_freeze": "docs/hsbc_challenge_audit_report_v1.md section 1.8",
+  "schema": "hsbc-sparkov-v1",
+  "scores_sha256": "fc0be04e9fb4f678757eef05c244df347428fb6f2797f1b84a7ef0f3a3efdc2d",
+  "source": {
+    "canonical_listing": "https://www.kaggle.com/datasets/kartik2112/fraud-detection",
+    "download_endpoint": "https://www.kaggle.com/api/v1/datasets/download/kartik2112/fraud-detection",
+    "test_sha256": "12d553ab19440c752d2531ee1af44bb64f12cc3d3839f1649f19e81c230545f0",
+    "train_sha256": "fd7139200dbfcbed0b6742bbe05a4f1abce532c4fef20918228a651647a3e75d"
+  },
+  "tau_selected_on_validation": 8.0,
+  "temporal_contract": {
+    "fit_rows_frauds": [
+      1037340,
+      5968
+    ],
+    "fit_time_min_max": [
+      "2019-01-01 00:00:18",
+      "2020-03-06 07:15:17"
+    ],
+    "test_file_nondecreasing": true,
+    "test_rows_frauds": [
+      555719,
+      2145
+    ],
+    "test_time_min_max": [
+      "2020-06-21 12:14:25",
+      "2020-12-31 23:59:34"
+    ],
+    "train_file_nondecreasing": false,
+    "validation_rows_frauds": [
+      259335,
+      1538
+    ],
+    "validation_time_min_max": [
+      "2020-03-06 07:16:43",
+      "2020-06-21 12:13:37"
+    ]
+  },
+  "train_caps": {
+    "OCC_legitimate_rows": 80000,
+    "XGB_fraud_rows": 5968,
+    "XGB_legitimate_rows": 300000,
+    "test_evaluation_rows": 555719
+  },
+  "wall_seconds": 30.130812883377075,
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

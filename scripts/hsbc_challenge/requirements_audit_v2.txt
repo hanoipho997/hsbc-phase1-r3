@@ -1,0 +1,12 @@
+# Exact local versions used for the HSBC audit-v2 reproduction and runners.
+# Install into the VM audit environment; this supplements the root pyproject.
+numpy==2.4.6
+scipy==1.18.0
+scikit-learn==1.9.0
+pandas==2.3.3
+joblib==1.5.3
+xgboost==3.4.1
+lightgbm==4.7.0
+qiskit==2.5.0
+qiskit-aer==0.17.2
+matplotlib==3.11.0

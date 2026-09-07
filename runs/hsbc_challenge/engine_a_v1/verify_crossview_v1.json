@@ -1,0 +1,21 @@
+{
+  "W1_completeness_max_dev": 6.661338147750939e-16,
+  "W1_flag_consistency_max_dev": 0.0,
+  "W2_repo_forward_max_dev": 1.1188630228279524e-16,
+  "W2_repo_derivatives_max_dev": 2.0823185908634578e-16,
+  "W4_sector_derivative_identity_max_dev": 6.938893903907228e-17,
+  "W3_circuit_block_vector_max_dev": 4.113275040214143e-13,
+  "W3_circuit_pattern_prob_max_dev": 1.6986412276764895e-13,
+  "W5_dephased_numeric_vs_formula_max_dev": 1.1102230246251565e-16,
+  "W5_dephased_data_independence_spread": 0.0,
+  "W6_loss_gradient_fd_rel_dev": 1.888108205734776e-09,
+  "W6_fullspec": {
+    "n_qubits": 12,
+    "layers": 3,
+    "params": 18,
+    "syndrome_row_sum_max_dev": 3.1086244689504383e-15,
+    "syndrome_us_per_row": 1952.7520053088665,
+    "forward_and_derivs_us_per_row": 4497.459158301353
+  },
+  "wall_seconds": 25.334144830703735
+}

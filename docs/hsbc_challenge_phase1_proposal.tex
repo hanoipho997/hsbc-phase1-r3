@@ -1,0 +1,410 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=18mm,top=17mm,bottom=18mm}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
+ urlcolor=blue!55!black,
+ pdftitle={Coherent Cross-View Syndromes for Credit-Card Fraud},
+ pdfauthor={Ha Nguyen}}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Coherent Cross-View Syndromes}
+\rhead{HSBC Phase-1 Concept Proposal, rev.\ 3}
+\cfoot{\thepage}
+\setlength{\headheight}{12pt}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.45em}{}
+\titlespacing{\section}{0pt}{6pt plus 1pt}{3pt}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.4em}{}
+\titlespacing{\subsection}{0pt}{4pt plus 1pt}{2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.5pt}
+\newcommand{\psucc}{p_{\mathrm{s}}}
+\newcommand{\T}{\mathsf{T}}
+\newenvironment{resultbox}
+ {\par\smallskip\noindent\begin{minipage}{\linewidth}%
+  {\color{blue!45!black}\hrule height .8pt}\vspace{3pt}\small}
+ {\vspace{3pt}{\color{blue!45!black}\hrule height .8pt}\end{minipage}\par\smallskip}
+
+\title{\vspace{-1.8em}\textbf{Coherent Cross-View Syndromes for Credit-Card Fraud:\\
+Mechanism Validation Under Classical Stop Gates}\\[0.3em]
+\large 2026 Global Quantum + AI Challenge -- Phase 1 Concept Proposal\\
+\normalsize HSBC: \emph{Quantum-Enhanced Credit Card Fraud Detection for
+Digital Payment Ecosystems}}
+\author{\textbf{Ha Cong Nguyen} --- single-member team, lead/contact,\\[-.1em]
+\small model developer and model-risk owner\\[-.1em]
+\small\url{https://github.com/hanoipho997/hsbc-phase1-r3}}
+\date{Revision 3 -- 8 September 2026}
+
+\begin{document}
+\maketitle
+\vspace{-1.4em}
+
+\section{Decision problem and proposal thesis}
+
+Fraud detection needs a probability-like score, a binary decision,
+per-transaction attribution, and unchanged-prevalence evidence. We use AUPRC
+as the primary ranking metric because it is recommended for extreme
+imbalance, alongside AUC-ROC, precision, recall, $F_1$, calibration, and
+recall at fixed review budget.
+
+We propose a compact, circuit-realizable coherent anomaly and syndrome
+mechanism, then subject it to classical and QML twins. The fixed-$L{=}1$
+mixer increment replicates, and angle adaptation beats a prespecified
+random-freeze distribution. The scorer is not statistically resolved from
+our strongest product quantum kernel or hybrid QNN, while competent classical
+models remain as good or better. \textbf{We claim no quantum advantage.}
+Phase 2 is a capped Amazon Braket mechanism-validation study with exact
+classical twins and stop gates, not a promise to improve a production fraud
+backbone.
+
+\textbf{Three claims, in order of strength.}
+\begin{enumerate}
+\item \textbf{Verified mechanism.} In a fresh-ancilla binary stacked-LCU
+implementation, the joint pass/fail pattern is an interpretable coherent
+measurement. Complete path dephasing at the declared insertion point makes
+its pattern law input independent. The endpoint, sector algebra, and an
+$X$-readout success-derivative identity have exact and circuit referees.
+\item \textbf{Bounded named-instance competitiveness.} On the frozen ULB
+split, stacked-LCU's differences from product-fidelity QSVC and a
+Deloitte/AWS-shaped hybrid QNN are unresolved; equivalence is not established,
+and classical point estimates are as good or better. This is a common-split
+predictive-quality bracket, not a matched-runtime or matched-hardware-resource
+tournament.
+\item \textbf{Application result.} On the prospectively frozen IEEE-CIS
+chronological experiment, every gate failed and the quantum residual harmed
+AUPRC. The classical backbone remains the detector; the circuit is
+monitoring-only unless a future no-harm and benefit gate passes.
+\end{enumerate}
+
+Prior fraud-QML metrics use materially different, often balanced or reduced
+protocols. We do not infer how external models would perform under ours. The
+deployed-size circuit and its exact $2^L$ path twin are classically tractable;
+no result below shows runtime, energy, sample-complexity, or FTQC advantage.
+
+\section{Technical approach}
+
+\textbf{Architecture and coordinates.} Twelve semantic-view features are
+quantile-angle encoded on 12 qubits. Three binary LCU layers use one fresh
+ancilla each. Layer $j$ implements
+\begin{equation}
+K_j=\cos^2\!\beta_j U^{(V)}+\sin^2\!\beta_j e^{i\phi_j}U^{(W)},\quad
+F_j=\cos\beta_j\sin\beta_j\!\left(e^{i\phi_j}U^{(W)}-U^{(V)}\right),
+\end{equation}
+where $U^{(V)}=e^{-i\theta H_V}\operatorname{RX}_V(\varphi)$. Hence
+$\partial_{\beta_j}K_j=2F_j$. This is an exact $X$-readout derivative
+identity, not a new general differentiation method. Engine A uses softmax
+logits $(\ell_0,\ell_1)$ with
+\begin{equation}
+\partial_{\ell_0}K=-\sqrt{a_0a_1}F,\qquad
+\partial_{\ell_1}K=+\sqrt{a_0a_1}F.
+\end{equation}
+The common-logit direction is a gauge: 18 raw parameters, 15 identifiable.
+Khatri--Zohren--Matos already define S-LCU layering and study its trainability
+and simulation scaling \cite{Khatri}. We claim neither architecture nor name;
+our setting-specific object is the fresh-ancilla measurement package.
+
+\textbf{Syndrome and twins.} One ancilla $Z$ setting yields eight bins (seven
+independent values) for checks (A,B), (B,C), (A,C); finite shots are required.
+Complete dephasing gives the input-independent product of
+Bernoulli($2a_0a_1$) under fresh ancillas, unitary branches, exact dephasing
+after SELECT/before PREP$^\dagger$, and no later ancilla operation. The exact
+$2^L$ path expansion is the mandatory classical twin.
+
+\textbf{Training and explanation.} Mixing-angle gradients use one $X$ setting
+per layer; branch parameters use finite-Fourier shifts. The measured-flag
+Fisher metric uses $1+L=4$ settings for the deployed $L=3$ mixing-angle/flag
+block versus 13 for the full conditional-state construction. This is not a
+uniform shot advantage or all-parameter count. Explanations combine
+legit-fitted view Ising tables, named syndrome failures, local sensitivity,
+and classical-backbone SHAP.
+
+\section{Evidence, strongest first}
+
+\subsection{Verified mechanism and Braket-local bridge}
+
+Dense algebra and circuit referees reproduce states, sectors and derivatives
+at $10^{-13}$--$10^{-16}$. The dephased endpoint agrees with its formula to
+$8.3\times10^{-16}$. A Braket-SDK \textbf{local} density-matrix run of a
+6-system+3-ancilla instance agrees with the exact twin to
+$3.3\times10^{-15}$; this is not SV1, DM1, a managed simulator, or QPU result.
+
+The original interval code deduplicated bootstrap rows and did not redraw
+shots. The transparent post-outcome correction retains duplicates, nests
+2,000-shot multinomial draws, and uses 99.5\% intervals for the intended
+ten-decision family:
+\begin{center}\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+seed & 900 & 901 & 902 & 903 & 904\\
+\midrule
+exact $W(0)-W(1)$ & .07396 & .03174 & .05308 & .05527 & .04489\\
+99.5\% lower bound & .02062 & .01318 & .01583 & .01485 & .01413\\
+99.5\% upper bound & .11659 & .04614 & .08164 & .08728 & .06890\\
+\bottomrule
+\end{tabular}
+\end{center}
+Only a seed-900 plug-in noise sensitivity exists: low-noise interval
+$[.00596,.02212]$; high-noise $[-.00023,.00049]$. The intended five-seed
+device-noise gate is unresolved. This motivates, but does not complete, a
+hardware experiment.
+
+\subsection{ULB: ablation, OCC parity, and named rivals}
+
+S1 is the analytic one-layer LCU/imaginary-time-inspired anomaly score without
+a trained mixer; S2-L1 is its fixed-depth trained-mixer form; OCC fits only
+legitimate training rows. On the unchanged-prevalence holdout (56,962 rows,
+99 frauds), AUPRC progresses 0.264 hard bits, 0.688 soft quantile encoding,
+0.696 S1, and 0.704--0.706 S2-L1. The dominant gain is classical encoding.
+
+The fixed-$L{=}1$ mixer increment replicates at
+$+.007242$ [$+.001366,+.013372$]. Trained minus frozen-random is
+$+.120265$ [$+.084777,+.153449$], while frozen-random minus matched $\phi=0$
+is $-.106891$ [$-.137744,-.072477$]. All ten trained-minus-random point signs
+are positive; intervals condition on the ten fitted seeds. This is a trained
+fixed-protocol effect, not a generic coherence, depth, or advantage claim.
+
+PCA OCC reaches 0.7238 and IsolationForest 0.6967, matching or beating the
+standalone scorer. The bounded QML bracket shares split, features, and test
+rows with family-specific caps, but no common runtime/shot/query currency.
+Stack reference S2-L1 is 0.705758; simultaneous intervals cover seven primary
+comparisons:
+\begin{center}\scriptsize
+\begin{tabularx}{\linewidth}{@{}XrrX@{}}
+\toprule
+named implementation & AUPRC & stack minus arm & classical/ablation twin\\
+\midrule
+product-fidelity QSVC & .701587 & +.004171 [$-.050248,+.068656$] & RBF-SVC .705807\\
+Deloitte/AWS hybrid QNN & .707566 & $-.001807$ [$-.035944,+.033507$] & dense head .721783\\
+ring-IQP Nystrom & .542580 & +.163179 [$+.048194,+.270152$] & RBF-Nystrom .730616\\
+projected ring-IQP SVC & .632009 & +.073749 [$-.026860,+.169265$] & RBF-SVC .705807\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Product-QSVC and hybrid-QNN differences are unresolved; neither meets
+$\pm.01$ equivalence. Local 80\%-power MDEs are .0748 and .0435 AUPRC,
+conditional on these paired score distributions. Reduced-effort VQC/QAE/AE
+stress tests remain implementation-qualified in the audit, not family proof.
+
+Supervised-screened dominant-mode S1/XGB AUPRC is .944/.228 ($k=3$),
+.945/.413 ($k=4$), and .945/.394 ($k=6$), with paired differences
+$+.7162$ [$+.5973,+.8122$], $+.5319$ [$+.3829,+.6736$], and $+.5507$
+[$+.4152,+.6863$]. Fraud labels determine the screen, centroids, and dominant
+mode; minority modes mostly reverse and a legitimate-only screen collapses.
+This is off-manifold sensitivity, not label-free novel-fraud advantage. At
+128 shots, mean AUPRC delta is $-.00483$, but the 30-draw range
+$[-.04596,+.03528]$ leaves direction unresolved.
+
+\subsection{IEEE-CIS Engine A: prominent FAIL}
+
+The core split, routing, endpoints, gates and outcome wordings were frozen
+before sealed-test access; feature/view and arm design used train/validation
+data. A 144-fit XGBoost+LightGBM backbone reached validation AUPRC .65195,
+then .52939 on the chronological sealed period.
+\begin{resultbox}
+\textbf{ENGINE-A VERDICT: FAIL G1--G4.} Quantum minus backbone AUPRC is
+$-.002298$ [$-.004087,-.000682$]. Quantum minus the strongest matched
+classical residual is $-.001265$ [$-.003144,+.000476$], unresolved and not
+equivalent. Keyed noise is $-.007168$ [$-.010463,-.004060$]. No residual is
+deployed.
+\end{resultbox}
+At $K=400$, frozen validation-band oracle headroom was only .8675 recall
+percentage points. A secondary rolling-origin analysis is consistent with
+cross-region score interleaving, while both locally frozen in-period splice
+contrasts were unresolved. Noise excludes a quantum-specific explanation but
+does not identify finite-sample overfit, reranking, calibration, or drift as
+the cause.
+
+\subsection{Conditions map}
+\begin{center}\scriptsize
+\begin{tabularx}{\linewidth}{@{}p{.23\linewidth}p{.18\linewidth}X@{}}
+\toprule
+axis / threshold & point winner & evidence and boundary\\
+\midrule
+five total fraud labels & classical OCC & IF .587; XGB-full .546; S1 .483; wide seed ranges\\
+later chronological ULB 20\% & classical supervised & XGB-full .792; XGB-8 .786; S2 .753\\
+screened dominant mode $k=3/4/6$ & S1, classically exact & .944/.945/.945; minority modes reverse\\
+prevalence .02\%, reweighted & S1, classically exact & S1 .498; XGB-8 .488; IF .336; no row subsampling\\
+inward shift $\epsilon=.05/.10/.20$ & S1, classically exact & .592/.580/.450 vs XGB .549/.365/.358; not attack feasibility\\
+Sparkov supplied test & classical supervised & XGB .8721; IF .0640; S1 .0062\\
+ULB$\leftrightarrow$Sparkov & no useful transfer & best weak OCC .0537; coordinates do not transfer\\
+IEEE temporal holdout & backbone / no residual & backbone .52939; Q residual $-.00230$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Verdict: classical coverage suffices everywhere measured.} Rows that
+favor S1 are exactly classically evaluable at tested depth. No measured
+condition requires a quantum processor.
+
+\section{Outputs, explainability, and impact}
+
+The deployable output is the classical backbone probability in $[0,1]$ plus a
+validation-chosen binary decision. On visible IEEE-CIS validation data, Brier
+is .02135 versus .03752 for constant prevalence and ten-bin ECE is .01270; no
+post-hoc recalibration was fitted. At frozen threshold .994177,
+TP/FP/FN/TN is 223/14/4388/113483 (precision .9409, recall .0484, $F_1$
+.0920). Derived only from existing sealed aggregates, without a new test
+read, it is 167/0/3897/114044 (precision 1.000, recall .0411, $F_1$ .0789).
+
+An artifacted, label-blind validation illustration uses row token
+\texttt{cb7b9f51cf78481f}: backbone probability .9071, in the review band.
+Mean failure probabilities are .347 for A--B, .136 for B--C, and .547 for
+A--C; $P(\text{any failure})=.781$, with A--C-only the most likely nonzero
+pattern (.347). This deliberately extreme model-selected case is not a
+representative-case or accuracy claim.
+
+Expected Phase-2 impact is bounded: a Braket mechanism demonstration; a
+no-harm monitoring/attribution rail; a public full-prevalence evaluation
+template; and conditions that tell HSBC when to stop. It is not a promise of
+fraud-score improvement.
+
+\section{Phase-2 Braket work package and stop gates}
+\begin{enumerate}
+\item \textbf{Dephasing witness.} Materialize $\mathcal D_q$ as randomized
+physical I/Z blocks, assigning Z with probability $q/2$; simulator
+\texttt{phase\_flip} cannot run on a QPU. Freeze device, native compile,
+topology, calibration, job order, data approval, power and multiplicity. The
+reduced base is 80,000 shots before twirl, identical-branch and calibration
+controls.
+\item \textbf{X-readout estimator.} Compare against optimally allocated
+parameter shift, SPSA and a Hadamard test at matched state preparations and
+shots; report cosine, bias, variance and shots-to-target.
+\item \textbf{Flag geometry.} Replicate flag-NG vs Adam under calibrated noise,
+counting shots rather than settings. Existing $+.001882$
+[$+.000239,+.004057$] is a small simulator optimizer effect.
+\item \textbf{Native-resource gate.} Compile for the selected Braket device's
+actual gates/connectivity, then power and price the complete experiment.
+\item \textbf{Application gate closed.} Reopening needs a new externally
+timestamped protocol, temporal rehearsal, rank-preserving integration,
+calibration, and no-harm gate. The IEEE sealed period gets no further
+confirmatory read.
+\end{enumerate}
+Stop if references fail, the contrast is underpowered, calibrated noise erases
+it, or the classical twin matches the operational benefit.
+
+\section{Deployment, governance, and team}
+
+The backbone ranking is never overwritten. Syndrome patterns are an
+asynchronous monitoring/attribution rail; exact classical paths are the
+fallback. IEEE-derived row arrays are \texttt{PRIVATE\_LICENSED} and excluded
+from public release, VM handoff, or AWS transfer absent licence and governance
+approval. Public artifacts contain aggregate JSON, theorem code and synthetic
+referees.
+
+Ha Cong Nguyen is the single-member team, lead/contact, model developer and
+model-risk owner, responsible for evidence integrity, classical stop gates,
+calibration/drift monitoring, and requiring independent validation before any
+production influence. The work demonstrates adversarial self-audit, OCC
+parity, sealed-test discipline, unchanged-prevalence rivals, circuit referees,
+negative-result publication, and a versioned post-outcome correction.
+Affiliation, short biography and publications remain submission-form metadata
+if required. The sanitized release record is
+\url{https://github.com/hanoipho997/hsbc-phase1-r3}. The immutable
+scientific-content commit and DOI are recorded in the final metadata commit
+after the Zenodo record is reserved.
+
+\clearpage
+\appendix
+\section*{Appendix A -- Evidence and scope ledger}
+
+\textbf{Parameters and measurements.}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}XcX@{}}
+\toprule
+instance & raw / identifiable & measurement/result boundary\\
+\midrule
+ULB $L=1$ & 4 / 3 & source/new-seed AUPRC about .704/.706\\
+original ULB $L=2$ & 8 / 6 & selected result .648; depth did not help\\
+Engine-A cross-view $L=3$ & 18 / 15 & eight bins/seven independent values, one Z setting\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Implementation-qualified stress tests.} Our re-uploading VQC (.00648),
+one-layer trash-occupation surrogate (.00103), kernel OCC (.00451), and small
+hybrid latent AE (.06435) performed poorly but do not bound their families:
+architecture/tuning, polarity, native-FPR, or capacity controls were
+insufficient. They are audit stress tests, not headline competitors.
+
+\textbf{Theory floor.} (i) For the tested commuting core/product encodings,
+classical estimators match or improve the reported shot variance. (ii) For an
+unamplified diagonal filter,
+$\psucc P(z^*|\mathrm{success})=q_0(z^*)g(E(z^*))$ is a raw-hit-yield identity,
+not a universal no-go. (iii) The LCHS period/span rule is a necessary
+alias-free precheck: failure permits but need not force inversion, and passing
+guarantees neither monotonicity nor accuracy. (iv) The dephasing theorem is
+scoped to the assumptions in Sec.~2; its curve is classically exact here.
+(v) Flag-NG geometry is known; matched-shot noisy behavior remains open.
+
+\textbf{Generic compilation envelope.} Qiskit O3, ten seeds, exact 15-qubit
+operator: 155 RXX on abstract all-to-all RXX; 238 CZ on abstract all-to-all
+CZ; 354--374 CZ on a synthetic full $4\times5$ square grid; 486--513 CZ on a
+line. These are not vendor-native or equal-fidelity results; the grid is not an
+IQM Garnet topology. Sze et al.\ provide trapped-ion multiplexer precedent,
+not validation of these counts \cite{Sze}.
+
+\textbf{FTQC boundary.} Coherent polynomial-optimization and linear-solve
+modules support a separate roadmap, not Phase-1 advantage or parameter-space
+QNG. Any claim needs end-to-end oracle, conditioning, precision, success,
+non-tomographic readout, and best-classical accounting.
+
+\begin{thebibliography}{99}\small\itemsep1pt
+\bibitem{HSBC} HSBC, \emph{Quantum-Enhanced Credit Card Fraud Detection for
+Digital Payment Ecosystems}, 2026 challenge statement.
+\bibitem{EngineA} H. Nguyen, Engine-A protocol and report,
+\path{docs/hsbc_engine_a_preregistration_v1.md} and
+\path{docs/hsbc_engine_a_report_v1.md}, 2026.
+\bibitem{Audits} H. Nguyen, adversarial audits v1/v2,
+\path{docs/hsbc_challenge_audit_report_v1.md} and
+\path{docs/hsbc_challenge_audit_report_v2.md}, 2026.
+\bibitem{Novelty} H. Nguyen, corrected novelty dossier and dephasing amendment,
+\path{docs/hsbc_challenge_claude_novelty_dossier_v2.md}, 2026.
+\bibitem{Khatri} N. Khatri, S. Zohren, G. Matos, arXiv:2607.24686 and
+arXiv:2506.22310.
+\bibitem{Prior} A. Daskin, arXiv:2605.02986; P. Faehrmann, J. Eisert,
+R. Kueng, arXiv:2505.15913; J. Heredge et al., arXiv:2405.17388.
+\bibitem{Kernels} V. Havlicek et al., \emph{Nature} 567 (2019);
+R. Kubler et al., NeurIPS (2021); H.-Y. Huang et al., \emph{Nat. Commun.}
+12 (2021).
+\bibitem{FraudQML} A. El Alami, N. Innan, M. Shafique, M. Bennai,
+arXiv:2412.19441; N. Innan, M. A. Khan, M. Bennai, \emph{Int. J. Quantum
+Inf.} 22(2), 2350044; A. Dinut et al., \emph{Electronics} 15, 2489 (2026).
+\bibitem{Hybrid} A. Sakhnenko et al., \emph{Quantum Machine Intelligence}
+(2022); Deloitte and AWS, Braket hybrid-QNN fraud case study (2024).
+\bibitem{Sze} H. Sze et al., arXiv:2501.18515 (2025).
+\bibitem{Methods} J. Stokes et al., \emph{Quantum} 4, 269 (2020);
+B. Koczor, S. C. Benjamin, \emph{Phys. Rev. A} 106, 062416 (2022);
+D. Wierichs et al., \emph{Quantum} 6, 677 (2022).
+\bibitem{AWS} Amazon Web Services, Braket device, native-gate and pricing
+documentation, accessed 8 Sep 2026.
+\end{thebibliography}
+
+\section*{Appendix B -- Reproducibility and release status}
+
+The Engine-A sealed result is cited from
+\path{runs/hsbc_challenge/engine_a_v1/unblind_real_v1.json}; "one read"
+applies only to that IEEE-CIS sealed partition. ULB test rows were reused
+across declared audits. Revision-3 additions form a fail-closed sanitized
+release package. Its scientific-content commit is frozen before the final
+metadata-only commit and Zenodo archive. Output completeness is frozen in
+\path{docs/hsbc_challenge_revision3_output_protocol_v1.md}, generated by
+\path{scripts/hsbc_challenge/report_revision3_outputs_v1.py}, with aggregate
+artifact under \path{runs/hsbc_challenge/revision3_v1/}. No sealed row or
+score was reread; IEEE-derived row arrays remain private.
+Engine-A implementation/evidence is source-locked at commit
+\texttt{5242b2d}; the Revision-2 base is \texttt{2fe355f}. The sanitized
+Revision-3 scientific-content commit and DOI are recorded in the final
+metadata commit and archive.
+
+\end{document}

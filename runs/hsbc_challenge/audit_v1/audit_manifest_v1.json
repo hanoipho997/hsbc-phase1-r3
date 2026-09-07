@@ -1,0 +1,24 @@
+{
+  "audit_version": "v1",
+  "date": "2026-08-30",
+  "protocol": "docs/hsbc_challenge_audit_report_v1.md sections 1.1-1.10",
+  "scripts": {
+    "scripts/hsbc_challenge/audit_reproduction_compare_v1.py": "4159829ef62e057d8b62cdc84c2dd08f4ad3994983064ae09e4a15ae6ee996da",
+    "scripts/hsbc_challenge/audit_priority_attacks_v1.py": "f7e82da19395e16b488ab7d4b046f41fd58add28f26fc81b5819c46a9c0c29bd",
+    "scripts/hsbc_challenge/audit_occ_tournament_v1.py": "4f7061f0e55bc42d32d3bf8ff039101fdce8d92f131abcba152f62bcc11b686f",
+    "scripts/hsbc_challenge/audit_improvements_regimes_v1.py": "c51c683a339a62b5c17923910a1d37f186da21731cc790bfc5b3e9ee30bed324",
+    "scripts/hsbc_challenge/audit_sparkov_v1.py": "11f6eae0093eda0f7ac108fad81076fd851cadc33f4b037156720dd65bc8db7a"
+  },
+  "artifacts": {
+    "runs/hsbc_challenge/audit_v1/baseline_reproduction_v1.json": "66dc3c41fcc6d67e73cde50a32d934136b2412d2803d86015311e02756043f24",
+    "runs/hsbc_challenge/audit_v1/priority_attacks_v1.json": "8292f89f3108d2758a46cd80db8a922d8f63bd8b2640774cd1116f398f7ff4ee",
+    "runs/hsbc_challenge/audit_v1/occ_tournament_v1.json": "c7d0c2e9b542ee1df033a4382e7343193200f34734b107b835c5990e8aa1829b",
+    "runs/hsbc_challenge/audit_v1/improvements_regimes_v1.json": "2ff8521facec0e62b59a487af8140dd627de6d5436baecb7745bb386322d0904",
+    "runs/hsbc_challenge/audit_v1/sparkov_v1.json": "b050afb070cacca3f0c66e9d6665f608ef666d02b4982be5a51d440586a8cd51"
+  },
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

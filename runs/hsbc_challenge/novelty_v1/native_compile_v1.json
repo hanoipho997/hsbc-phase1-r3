@@ -1,0 +1,959 @@
+{
+  "schema": "hsbc-novelty-native-compile-v1",
+  "E2_walsh": {
+    "max_abs_weight_ge3": 2.0816681711721685e-17,
+    "nonzero_weight1_per_view": [
+      4,
+      4,
+      4
+    ],
+    "nonzero_weight2_per_view": [
+      6,
+      6,
+      6
+    ]
+  },
+  "E1_structured_vs_dense_max_dev_phase_aligned": 7.757919228897728e-16,
+  "E1_structured_vs_dense_pattern_prob_max_dev": 4.440892098500626e-15,
+  "E1_structured_counts": {
+    "two_qubit_gates": 228,
+    "depth": 210,
+    "two_qubit_depth": 171,
+    "ops": {
+      "cx": 144,
+      "rzz": 84,
+      "rz": 60,
+      "h": 48,
+      "rx": 24,
+      "ry": 18,
+      "p": 3
+    },
+    "qubits": 15
+  },
+  "E1_analytic_per_layer": {
+    "branches": 2,
+    "weight2_pauli_rotations_per_branch": 8,
+    "weight3_pauli_rotations_per_branch": 6,
+    "cx_per_weight3_rotation_ladder": 4,
+    "two_qubit_gates_per_layer_structured": 64,
+    "two_qubit_gates_L3_structured": 192,
+    "note": "a weight-3 Z_anc Z_q1 Z_q2 rotation is one native gate only on hardware with a multi-qubit ZZZ primitive; on MS/ZZ/CZ hardware it needs a 2-CX ladder each side"
+  },
+  "E3": {
+    "ion_all_to_all": {
+      "basis_gates": [
+        "rx",
+        "ry",
+        "rz",
+        "rxx"
+      ],
+      "coupling": null,
+      "per_seed": [
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 191,
+          "depth": 379,
+          "two_qubit_depth": 140,
+          "ops": {
+            "rx": 309,
+            "rz": 200,
+            "rxx": 191,
+            "ry": 157
+          },
+          "seed": 9
+        }
+      ],
+      "summary": {
+        "two_qubit_gates": {
+          "min": 191,
+          "median": 191.0,
+          "max": 191
+        },
+        "depth": {
+          "min": 379,
+          "median": 379.0,
+          "max": 379
+        },
+        "two_qubit_depth": {
+          "min": 140,
+          "median": 140.0,
+          "max": 140
+        }
+      },
+      "wall_seconds": 0.27243995666503906
+    },
+    "cz_all_to_all": {
+      "basis_gates": [
+        "cz",
+        "rz",
+        "sx",
+        "x"
+      ],
+      "coupling": null,
+      "per_seed": [
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 310,
+          "depth": 720,
+          "two_qubit_depth": 235,
+          "ops": {
+            "sx": 476,
+            "rz": 424,
+            "cz": 310,
+            "x": 22
+          },
+          "seed": 9
+        }
+      ],
+      "summary": {
+        "two_qubit_gates": {
+          "min": 310,
+          "median": 310.0,
+          "max": 310
+        },
+        "depth": {
+          "min": 720,
+          "median": 720.0,
+          "max": 720
+        },
+        "two_qubit_depth": {
+          "min": 235,
+          "median": 235.0,
+          "max": 235
+        }
+      },
+      "wall_seconds": 0.12283682823181152
+    },
+    "iqm_grid_4x5": {
+      "basis_gates": [
+        "r",
+        "cz"
+      ],
+      "coupling": "iqm_grid_4x5",
+      "per_seed": [
+        {
+          "two_qubit_gates": 474,
+          "depth": 951,
+          "two_qubit_depth": 355,
+          "ops": {
+            "r": 1397,
+            "cz": 474
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 483,
+          "depth": 1052,
+          "two_qubit_depth": 395,
+          "ops": {
+            "r": 1395,
+            "cz": 483
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 474,
+          "depth": 989,
+          "two_qubit_depth": 370,
+          "ops": {
+            "r": 1382,
+            "cz": 474
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 481,
+          "depth": 1003,
+          "two_qubit_depth": 376,
+          "ops": {
+            "r": 1375,
+            "cz": 481
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 470,
+          "depth": 951,
+          "two_qubit_depth": 354,
+          "ops": {
+            "r": 1381,
+            "cz": 470
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 475,
+          "depth": 956,
+          "two_qubit_depth": 355,
+          "ops": {
+            "r": 1383,
+            "cz": 475
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 479,
+          "depth": 918,
+          "two_qubit_depth": 341,
+          "ops": {
+            "r": 1404,
+            "cz": 479
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 471,
+          "depth": 939,
+          "two_qubit_depth": 353,
+          "ops": {
+            "r": 1373,
+            "cz": 471
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 485,
+          "depth": 973,
+          "two_qubit_depth": 363,
+          "ops": {
+            "r": 1391,
+            "cz": 485
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 485,
+          "depth": 1000,
+          "two_qubit_depth": 380,
+          "ops": {
+            "r": 1370,
+            "cz": 485
+          },
+          "seed": 9
+        }
+      ],
+      "summary": {
+        "two_qubit_gates": {
+          "min": 470,
+          "median": 477.0,
+          "max": 485
+        },
+        "depth": {
+          "min": 918,
+          "median": 964.5,
+          "max": 1052
+        },
+        "two_qubit_depth": {
+          "min": 341,
+          "median": 359.0,
+          "max": 395
+        }
+      },
+      "wall_seconds": 0.30657267570495605
+    },
+    "linear_chain_15": {
+      "basis_gates": [
+        "cz",
+        "rz",
+        "sx",
+        "x"
+      ],
+      "coupling": "linear_chain_15",
+      "per_seed": [
+        {
+          "two_qubit_gates": 612,
+          "depth": 1240,
+          "two_qubit_depth": 405,
+          "ops": {
+            "sx": 1106,
+            "rz": 644,
+            "cz": 612,
+            "x": 14
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 583,
+          "depth": 1228,
+          "two_qubit_depth": 392,
+          "ops": {
+            "sx": 1090,
+            "rz": 683,
+            "cz": 583,
+            "x": 14
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 582,
+          "depth": 1238,
+          "two_qubit_depth": 395,
+          "ops": {
+            "sx": 1088,
+            "rz": 693,
+            "cz": 582,
+            "x": 15
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 560,
+          "depth": 1218,
+          "two_qubit_depth": 392,
+          "ops": {
+            "sx": 1077,
+            "rz": 715,
+            "cz": 560,
+            "x": 16
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 583,
+          "depth": 1230,
+          "two_qubit_depth": 397,
+          "ops": {
+            "sx": 1099,
+            "rz": 679,
+            "cz": 583,
+            "x": 12
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 590,
+          "depth": 1201,
+          "two_qubit_depth": 386,
+          "ops": {
+            "sx": 1115,
+            "rz": 687,
+            "cz": 590,
+            "x": 10
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 578,
+          "depth": 1233,
+          "two_qubit_depth": 396,
+          "ops": {
+            "sx": 1092,
+            "rz": 693,
+            "cz": 578,
+            "x": 12
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 569,
+          "depth": 1216,
+          "two_qubit_depth": 390,
+          "ops": {
+            "sx": 1077,
+            "rz": 698,
+            "cz": 569,
+            "x": 15
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 580,
+          "depth": 1246,
+          "two_qubit_depth": 407,
+          "ops": {
+            "sx": 1085,
+            "rz": 689,
+            "cz": 580,
+            "x": 16
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 560,
+          "depth": 1218,
+          "two_qubit_depth": 392,
+          "ops": {
+            "sx": 1077,
+            "rz": 715,
+            "cz": 560,
+            "x": 16
+          },
+          "seed": 9
+        }
+      ],
+      "summary": {
+        "two_qubit_gates": {
+          "min": 560,
+          "median": 581.0,
+          "max": 612
+        },
+        "depth": {
+          "min": 1201,
+          "median": 1229.0,
+          "max": 1246
+        },
+        "two_qubit_depth": {
+          "min": 386,
+          "median": 393.5,
+          "max": 407
+        }
+      },
+      "wall_seconds": 0.40703392028808594
+    }
+  },
+  "E4_ulb_n8_L2": {
+    "couplings_thr0.01": 27,
+    "old_vs_new_operator_max_dev": 6.504819819040922e-16,
+    "old_controlled_gates": {
+      "seed7_audit_method": {
+        "two_qubit_gates": 280,
+        "depth": 695,
+        "two_qubit_depth": 242,
+        "ops": {
+          "sx": 371,
+          "cz": 280,
+          "rz": 270,
+          "x": 73
+        }
+      },
+      "seed_distribution": {
+        "two_qubit_gates": {
+          "min": 280,
+          "median": 280.0,
+          "max": 280
+        },
+        "depth": {
+          "min": 695,
+          "median": 695.0,
+          "max": 695
+        },
+        "two_qubit_depth": {
+          "min": 242,
+          "median": 242.0,
+          "max": 242
+        }
+      },
+      "per_seed": [
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 280,
+          "depth": 695,
+          "two_qubit_depth": 242,
+          "ops": {
+            "sx": 371,
+            "cz": 280,
+            "rz": 270,
+            "x": 73
+          },
+          "seed": 9
+        }
+      ]
+    },
+    "structured": {
+      "seed7_audit_method": {
+        "two_qubit_gates": 388,
+        "depth": 1174,
+        "two_qubit_depth": 348,
+        "ops": {
+          "sx": 569,
+          "rz": 520,
+          "cz": 388,
+          "x": 18
+        }
+      },
+      "seed_distribution": {
+        "two_qubit_gates": {
+          "min": 388,
+          "median": 388.0,
+          "max": 388
+        },
+        "depth": {
+          "min": 1174,
+          "median": 1174.0,
+          "max": 1174
+        },
+        "two_qubit_depth": {
+          "min": 348,
+          "median": 348.0,
+          "max": 348
+        }
+      },
+      "per_seed": [
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 0
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 1
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 2
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 3
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 4
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 5
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 6
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 7
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 8
+        },
+        {
+          "two_qubit_gates": 388,
+          "depth": 1174,
+          "two_qubit_depth": 348,
+          "ops": {
+            "sx": 569,
+            "rz": 520,
+            "cz": 388,
+            "x": 18
+          },
+          "seed": 9
+        }
+      ]
+    }
+  },
+  "E5_unary_iteration": {
+    "2": {
+      "selection_qubits": 1,
+      "scratch_qubits": 0,
+      "multicontrolled_toffoli_estimate": 0,
+      "unary_iteration_toffoli_estimate": 0
+    },
+    "4": {
+      "selection_qubits": 2,
+      "scratch_qubits": 1,
+      "multicontrolled_toffoli_estimate": 8,
+      "unary_iteration_toffoli_estimate": 4
+    },
+    "8": {
+      "selection_qubits": 3,
+      "scratch_qubits": 2,
+      "multicontrolled_toffoli_estimate": 32,
+      "unary_iteration_toffoli_estimate": 12
+    },
+    "16": {
+      "selection_qubits": 4,
+      "scratch_qubits": 3,
+      "multicontrolled_toffoli_estimate": 96,
+      "unary_iteration_toffoli_estimate": 28
+    }
+  },
+  "E5_note": "With K=2 branches the selection register is one qubit, scratch is zero and every branch is already singly controlled; unary iteration saves nothing at binary width and only matters once K>=4 branches share a layer.",
+  "wall_seconds": 17.999451875686646,
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

@@ -1,0 +1,938 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=25mm}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    citecolor=blue!55!black,
+    urlcolor=blue!55!black,
+    pdftitle={LCU-Inspired Quantum Natural Gradient Theory for the HSBC Fraud Detection Challenge},
+    pdfauthor={Ha Nguyen}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{LCU/QNG for HSBC Fraud Detection}
+\rhead{Theory Note}
+\cfoot{\thepage}
+\setlength{\headheight}{14pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.6em}{}
+
+\newcommand{\psucc}{p_{\mathrm{s}}}
+\newcommand{\pfraud}{p_{\mathrm{fraud}}}
+\newcommand{\kettildepsi}{\ket{\widetilde\psi}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\expect}[1]{\left\langle #1 \right\rangle}
+
+\newenvironment{keybox}
+ {\par\smallskip\noindent\begin{minipage}{\linewidth}%
+  {\color{blue!45!black}\hrule height .8pt}\vspace{5pt}}
+ {\vspace{5pt}{\color{blue!45!black}\hrule height .8pt}%
+  \end{minipage}\par\smallskip}
+
+\newenvironment{warningbox}
+ {\par\smallskip\noindent\begin{minipage}{\linewidth}%
+  {\color{orange!70!black}\hrule height .8pt}\vspace{5pt}}
+ {\vspace{5pt}{\color{orange!70!black}\hrule height .8pt}%
+  \end{minipage}\par\smallskip}
+
+\title{\textbf{LCU-Inspired Quantum Natural Gradient Methods\\for Credit Card Fraud Detection}\\[0.5em]
+\large Theory Note for the HSBC Global Quantum + AI Challenge 2026}
+\author{Ha Nguyen}
+\date{29 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note develops a self-contained theory for adapting stacked linear-combination-of-unitaries (LCU) circuits and quantum natural-gradient (QNG) training to the HSBC challenge on quantum-enhanced credit-card fraud detection. The central proposal is not to reinterpret fraud detection as a ground-state problem. Instead, a shallow coherent stack of binary LCU layers acts as a learned cross-view consistency or anomaly filter. The all-success ancilla probability is used as a quantum normality score, while single-failure sectors provide exact derivative states for the LCU mixing parameters. This makes the LCU success flag simultaneously an inference signal and a source of gradient information. A success-flag natural gradient, derived from the Fisher geometry of the measured Bernoulli output, gives a hardware-compatible alternative to full conditional-state QNG. The resulting method is naturally benchmarked against gradient boosting, matched unitary variational classifiers, incoherent LCU mixtures, SPSA, and generalized parameter-shift training under matched feature sets and shot budgets. No quantum-advantage claim is assumed; the theory yields falsifiable hypotheses about coherent interference, gradient efficiency, geometric preconditioning, and fraud-ranking performance.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{Challenge-aligned problem setting}
+
+HSBC asks for a quantum or quantum-inspired model for binary credit-card fraud classification, with fraud probability, binary prediction, and feature attribution as outputs. The primary evaluation metrics include AUC-ROC, AUPRC, F1, precision, recall, and a confusion matrix; strong classical baselines such as XGBoost, LightGBM, and CatBoost are expected \cite{HSBC2026}. The challenge explicitly allows hybrid pipelines, feature reduction, stratified subsampling for quantum execution, and the use of a quantum processor for only one component of the overall workflow \cite{HSBC2026}.
+
+A transaction is denoted
+\begin{equation}
+    x \in \R^D, \qquad y\in\{0,1\},
+\end{equation}
+where $y=1$ denotes fraud. Since the IEEE-CIS dataset has up to 393 features, the quantum model should operate on a reduced representation
+\begin{equation}
+    z=h_\omega(x)\in\R^d, \qquad d\approx 6\text{--}16,
+\end{equation}
+obtained by classical feature selection, a small autoencoder, a frozen tree-based feature map, or semantically grouped features. The reduced vector is encoded into $n$ system qubits,
+\begin{equation}
+    \ket{\phi(z)}=V(z)\ket{0}^{\otimes n}.
+\end{equation}
+Angle encoding or data re-uploading is preferable to amplitude encoding for a near-term proof of concept, because amplitude encoding would move substantial work into state preparation.
+
+\begin{keybox}
+\textbf{Core modelling choice.} LCU is used as the trainable classifier/anomaly filter; QNG is used as a geometry-aware training rule. Fraud detection is not recast as a QUBO or as ground-state search.
+\end{keybox}
+
+\section{A derivative-compatible binary LCU layer}
+
+For LCU layer $j$, introduce one ancilla and two system unitaries $U_{j0}$ and $U_{j1}$. Define the coherent layer
+\begin{equation}
+W_j(\beta_j)
+=
+R_y^{(a_j)}(-2\beta_j)
+\left(
+\ketbra{0}{0}\otimes U_{j0}
++
+\ketbra{1}{1}\otimes e^{i\varphi_j}U_{j1}
+\right)
+R_y^{(a_j)}(2\beta_j).
+\end{equation}
+Let
+\begin{equation}
+    c_j=\cos\beta_j,\qquad s_j=\sin\beta_j.
+\end{equation}
+Starting ancilla $a_j$ in $\ket{0}$, the two output blocks are
+\begin{align}
+K_j
+&=\bra{0}W_j\ket{0}
+=c_j^2U_{j0}+s_j^2e^{i\varphi_j}U_{j1},\\
+F_j
+&=\bra{1}W_j\ket{0}
+=c_js_j\left(e^{i\varphi_j}U_{j1}-U_{j0}\right).
+\end{align}
+$K_j$ is the successful nonunitary LCU layer and $F_j$ is the corresponding failure-sector operator. A direct derivative gives
+\begin{equation}
+\boxed{
+\frac{\partial K_j}{\partial\beta_j}=2F_j.
+}
+\label{eq:sector-derivative}
+\end{equation}
+This identity is the mathematical core of gradient recycling.
+
+For $L$ layers, the successful stack is
+\begin{equation}
+A_\Theta(z)=K_L(z)K_{L-1}(z)\cdots K_1(z),
+\end{equation}
+with unnormalized successful state
+\begin{equation}
+    \kettildepsi_\Theta(z)=A_\Theta(z)\ket{\phi(z)}
+\end{equation}
+and success probability
+\begin{equation}
+    \psucc(z)=\braket{\widetilde\psi_\Theta(z)|\widetilde\psi_\Theta(z)}.
+\end{equation}
+The derivative-sector construction is closely related to the stacked-LCU ansatz and gradient identities already developed in the companion E.ON concept proposal \cite{NguyenEON2026}; the present note changes the task from discrete optimization to supervised anomaly classification.
+
+\section{Why LCU success can be a fraud signal}
+
+\subsection{Cross-view consistency filter}
+
+A transaction naturally contains multiple feature groups. For example, one branch may encode transaction/card information and another branch address/device/identity information:
+\begin{equation}
+    U_{j0}=U_j^{(A)}(z_A),\qquad U_{j1}=U_j^{(B)}(z_B).
+\end{equation}
+For normalized $\ket{\psi}$,
+\begin{align}
+\norm{K_j\ket{\psi}}^2
+={}&c_j^4+s_j^4
++2c_j^2s_j^2
+\operatorname{Re}\!\left[
+ e^{i\varphi_j}
+ \mel{\psi}{U_{j0}^\dagger U_{j1}}{\psi}
+\right].
+\end{align}
+Hence
+\begin{equation}
+1-\norm{K_j\ket{\psi}}^2
+=
+\frac{1}{2}\sin^2(2\beta_j)
+\left[
+1-
+\operatorname{Re}\!\left(
+ e^{i\varphi_j}
+ \mel{\psi}{U_{j0}^\dagger U_{j1}}{\psi}
+\right)
+\right].
+\end{equation}
+At equal branch weight, $\beta_j=\pi/4$,
+\begin{equation}
+\boxed{
+ p_{\mathrm{fail},j}
+ =\frac{1}{2}\left[
+1-
+\operatorname{Re}\!\left(
+ e^{i\varphi_j}
+ \mel{\psi}{U_{j0}^\dagger U_{j1}}{\psi}
+\right)
+\right].
+}
+\label{eq:disagreement}
+\end{equation}
+Thus the ancilla failure probability is a learned disagreement measure between two quantum feature views.
+
+This is a plausible fraud-detection mechanism: legitimate transactions should often exhibit mutually consistent card, device, address, identity, and behavioural signals, while many fraud modes create cross-view inconsistencies. This is a modelling hypothesis to test, not a claim assumed a priori.
+
+Expanding the stack gives
+\begin{equation}
+A_\Theta
+=
+\sum_{\sigma\in\{0,1\}^L}
+ c_\sigma
+ U_{L,\sigma_L}\cdots U_{1,\sigma_1},
+\end{equation}
+so that
+\begin{equation}
+\psucc
+=
+\sum_{\sigma,\tau}
+ c_\sigma^*c_\tau
+ \mel{\phi}{U_\sigma^\dagger U_\tau}{\phi}.
+\end{equation}
+Terms with $\sigma\neq\tau$ are coherent interference terms. A dephased or incoherent mixture omits them. Therefore a direct ablation can test whether coherent path interference contributes useful fraud discrimination.
+
+\subsection{Complete-dephasing endpoint theorem}
+
+The preceding intuition has an exact endpoint, provided the physical
+intervention is specified. Let the ancilla of layer $j$ be fresh, let its real
+PREP state be $c_j\ket{0}+s_j\ket{1}$, let both SELECT branches be unitary,
+and insert complete dephasing of that ancilla after SELECT and before inverse
+PREP. Then, for every input density operator $\rho$, the measured layer bit
+has probabilities
+\begin{equation}
+ \Pr(a_j=0\mid\rho)=c_j^4+s_j^4,\qquad
+ \Pr(a_j=1\mid\rho)=2c_j^2s_j^2.
+ \label{eq:dephased-layer-law}
+\end{equation}
+Indeed, dephasing removes the off-diagonal path blocks and leaves
+\begin{equation}
+ c_j^2\ketbra{0}{0}\otimes U_{j0}\rho U_{j0}^\dagger
+ +s_j^2\ketbra{1}{1}\otimes U_{j1}\rho U_{j1}^\dagger.
+\end{equation}
+Inverse PREP and an ancilla-basis measurement give
+\eqref{eq:dephased-layer-law}; unitarity makes each system-block trace one, so
+the answer is independent of $\rho$, the branch phases, and the data.
+
+For a stack with one fresh ancilla per layer and the same within-layer
+intervention, the chain rule applies even though earlier outcomes can change
+the conditional system state:
+\begin{equation}
+ \boxed{\Pr(\mathbf a\mid\rho)=
+ \prod_{j=1}^{L}
+ (c_j^4+s_j^4)^{1-a_j}(2c_j^2s_j^2)^{a_j}.}
+ \label{eq:dephased-stack-law}
+\end{equation}
+Consequently, any observed between-input variation in the ideal coherent
+syndrome distribution is interference-borne relative to this particular
+dephasing location. The statement does not cover reused ancillas, nonunitary
+branches, dephasing at another circuit location, or a noisy QPU. Partial
+dephasing therefore defines a prospective operational witness curve, not a
+claim of predictive information or quantum advantage.
+
+\subsection{Learned soft-projector layer}
+
+A second construction takes
+\begin{equation}
+    U_{j0}=I,\qquad U_{j1}=U_j,
+\end{equation}
+where $U_j$ is a Hermitian involution,
+\begin{equation}
+    U_j^\dagger=U_j,\qquad U_j^2=I.
+\end{equation}
+Writing
+\begin{equation}
+    U_j=P_{j,+}-P_{j,-},
+\end{equation}
+we obtain
+\begin{equation}
+K_j=c_j^2I+s_j^2U_j
+=P_{j,+}+\cos(2\beta_j)P_{j,-}.
+\end{equation}
+The learned $+1$ subspace passes unchanged, while the learned $-1$ subspace is suppressed by $\cos(2\beta_j)$. At $\beta_j=\pi/4$,
+\begin{equation}
+    K_j=P_{j,+},
+\end{equation}
+an exact projector. More generally,
+\begin{equation}
+    p_{\mathrm{fail},j}
+    =\sin^2(2\beta_j)\mel{\psi}{P_{j,-}}{\psi}.
+\end{equation}
+Thus each layer is a trainable soft normal-subspace test. A stack of such layers behaves as a sequence of soft, potentially noncommuting anomaly filters,
+\begin{equation}
+A_\Theta
+=
+\prod_j\left(P_{j,+}+\rho_jP_{j,-}\right),
+\qquad \rho_j=\cos 2\beta_j.
+\end{equation}
+LCU-based nonunitary neural-network and classifier constructions provide relevant precedent for using linear combinations of unitaries as trainable nonlinear/nonunitary model components \cite{LCUClassifier2024}.
+
+\section{Recommended classifier outputs}
+
+\subsection{Primary model: success-flag anomaly score}
+
+Use
+\begin{equation}
+    r_Q(z)=1-\psucc(z)
+\end{equation}
+as the raw quantum anomaly score. The raw score need not equal the real fraud prevalence. Calibrate it classically:
+\begin{equation}
+\widehat \pfraud(x)
+=
+\sigma\!\left(a+b\,r_Q(h_\omega(x))\right).
+\end{equation}
+A hybrid ensemble can additionally include a frozen classical score $r_{\mathrm{GBDT}}(x)$,
+\begin{equation}
+\widehat \pfraud(x)
+=
+\sigma\!\left(
+ a+b\,r_Q(x)+c\,r_{\mathrm{GBDT}}(x)
+\right).
+\end{equation}
+
+This construction has several advantages:
+\begin{enumerate}[leftmargin=*]
+\item No postselection is required at inference: every shot contributes to estimating $\psucc$.
+\item The LCU success probability is the signal rather than merely a sampling overhead.
+\item The natural-gradient metric can be based on the measured Bernoulli output and is therefore much cheaper than full conditional-state QNG.
+\item Device noise can be absorbed into calibration and explicitly benchmarked.
+\item The quantum score can be deployed as a second-stage re-ranker for transactions on which a classical model is uncertain.
+\end{enumerate}
+
+\subsection{Secondary model: conditional-state classifier}
+
+A richer architecture measures a fraud projector $\Pi_f$ on the successful system state:
+\begin{equation}
+    n_f(z)=\mel{\widetilde\psi(z)}{\Pi_f}{\widetilde\psi(z)},
+\end{equation}
+with
+\begin{equation}
+    q_f(z)=\frac{n_f(z)}{\psucc(z)}
+    =P(\text{fraud readout}\mid\text{LCU success}).
+\end{equation}
+For a readout qubit,
+\begin{equation}
+    \Pi_f=\frac{I-Z_r}{2}.
+\end{equation}
+This model is potentially more expressive, but it creates a $1/\psucc$ statistical overhead, ratio-gradient instability when $\psucc$ is small, and a need to report conditional quality separately from physical yield. It should therefore be treated as a secondary architecture rather than the first hardware demonstration.
+
+\section{Exact gradient recycling from failure sectors}
+
+Retain all $L$ ancillas coherently. The global state can be expanded as
+\begin{equation}
+    \ket{\Omega(z)}
+    =\sum_{\mathbf a\in\{0,1\}^L}
+    \ket{\mathbf a}\ket{\psi_{\mathbf a}(z)}.
+\end{equation}
+The all-zero sector is
+\begin{equation}
+    \ket{\psi_{\mathbf 0}}=\kettildepsi.
+\end{equation}
+The sector in which only ancilla $j$ fails is
+\begin{equation}
+\ket{f_j}
+=
+K_L\cdots K_{j+1}F_jK_{j-1}\cdots K_1\ket{\phi}.
+\end{equation}
+Using Eq.~\eqref{eq:sector-derivative},
+\begin{equation}
+\boxed{
+\frac{\partial}{\partial\beta_j}\kettildepsi=2\ket{f_j}.
+}
+\label{eq:derivative-state}
+\end{equation}
+Define
+\begin{equation}
+    \Pi_{\bar j}=\prod_{k\neq j}\ketbra{0}{0}_{a_k}.
+\end{equation}
+For any Hermitian system observable $O$,
+\begin{equation}
+\expect{X_{a_j}\Pi_{\bar j}\otimes O}_{\Omega}
+=2\operatorname{Re}\braket{\widetilde\psi|O|f_j}.
+\end{equation}
+Therefore,
+\begin{equation}
+\boxed{
+\partial_{\beta_j}
+\mel{\widetilde\psi}{O}{\widetilde\psi}
+=
+2\expect{X_{a_j}\Pi_{\bar j}\otimes O}_{\Omega}.
+}
+\label{eq:observable-gradient}
+\end{equation}
+In particular,
+\begin{equation}
+\boxed{
+\partial_{\beta_j}\psucc
+=2\expect{X_{a_j}\Pi_{\bar j}}_{\Omega}.
+}
+\label{eq:success-gradient}
+\end{equation}
+Thus one interference setting with ancilla $j$ measured in the $X$ basis and the remaining ancillas checked in $Z$ yields the exact derivative of the success probability with respect to $\beta_j$.
+
+\begin{warningbox}
+Ordinary $Z$-basis failure records do not by themselves constitute a gradient estimator. The derivative information is accessed through an additional interference setting, such as $X$ on the target ancilla. The advantage is that one need not synthesize a separately shifted copy of the entire LCU stack for the $\beta_j$ derivative.
+\end{warningbox}
+
+For a normalized conditional observable
+\begin{equation}
+    m_O=\frac{\mel{\widetilde\psi}{O}{\widetilde\psi}}{\psucc},
+\end{equation}
+the quotient rule and Eqs.~\eqref{eq:observable-gradient} and
+\eqref{eq:success-gradient} give
+\begin{equation}
+\boxed{
+\partial_{\beta_j}m_O
+=
+\frac{2}{\psucc}\left[
+\expect{X_{a_j}\Pi_{\bar j}\otimes O}
+-m_O\expect{X_{a_j}\Pi_{\bar j}}
+\right].
+}
+\end{equation}
+Parameters inside ordinary Pauli-rotation blocks can use standard parameter-shift rules. Controlled branch unitaries can have larger generator spectra and may require generalized finite-Fourier shift rules \cite{Wierichs2022}.
+
+\section{Loss function under class imbalance}
+
+For the success-flag classifier, interpret $\psucc$ as a learned probability of normality:
+\begin{equation}
+P(y=0\mid x)\approx \psucc(x),\qquad
+P(y=1\mid x)\approx 1-\psucc(x).
+\end{equation}
+A class-weighted binary cross-entropy is
+\begin{equation}
+\mathcal L_{\mathrm{flag}}
+=-\frac{1}{B}\sum_{i=1}^B
+\left[
+ w_1y_i\log(1-p_{\mathrm{s},i})
+ +w_0(1-y_i)\log p_{\mathrm{s},i}
+\right].
+\label{eq:weighted-bce}
+\end{equation}
+The exact LCU-angle gradient is
+\begin{equation}
+\frac{\partial\mathcal L_{\mathrm{flag}}}{\partial\beta_j}
+=
+\frac{1}{B}\sum_i
+\left[
+\frac{w_1y_i}{1-p_{\mathrm{s},i}}
+-
+\frac{w_0(1-y_i)}{p_{\mathrm{s},i}}
+\right]
+\frac{\partial p_{\mathrm{s},i}}{\partial\beta_j},
+\end{equation}
+with $\partial p_{\mathrm{s},i}/\partial\beta_j$ obtained from
+Eq.~\eqref{eq:success-gradient}.
+
+For finite-shot robustness, the loss should use a clipped probability
+\begin{equation}
+\widetilde p_{\mathrm{s}}
+=
+\min(1-\epsilon,\max(\epsilon,\psucc)),
+\end{equation}
+so that accidental estimates of exactly zero or one do not generate singular gradients.
+
+The IEEE-CIS training set has a fraud rate of about 3.5\%, whereas the European Cardholder dataset is much more imbalanced at about 0.172\% \cite{HSBC2026}. For the hardware-facing proof of concept, IEEE-CIS is therefore a more forgiving primary dataset. Class weighting should be used for optimization while evaluation is performed on an untouched distribution; any probability output should be calibrated on a held-out validation set.
+
+\section{What QNG should mean in supervised fraud detection}
+
+For each input transaction, the parameterized circuit prepares a different state. Therefore a QNG for supervised learning requires an explicit choice of the statistical model whose geometry is used.
+
+For normalized $\ket{\psi_\Theta(z)}$, the Fubini--Study metric is
+\begin{align}
+ g_{\mu\nu}(z)
+ =\operatorname{Re}\Big[&
+ \braket{\partial_\mu\psi(z)|\partial_\nu\psi(z)} \\
+ &-
+ \braket{\partial_\mu\psi(z)|\psi(z)}
+ \braket{\psi(z)|\partial_\nu\psi(z)}
+ \Big].
+\end{align}
+The QNG update has the generic form
+\begin{equation}
+    (G+\lambda I)\Delta\Theta
+    =-\eta\nabla_\Theta\mathcal L,
+\end{equation}
+where $G$ is a data-averaged quantum metric and $\lambda$ regularizes ill-conditioned directions. This is steepest descent in quantum-state geometry rather than ordinary Euclidean parameter space \cite{Stokes2020}.
+
+For a minibatch $\B$, a principled data-averaged metric is
+\begin{equation}
+G_{\mu\nu}^{\B}
+=\sum_{i\in\B}\rho_i g_{\mu\nu}(z_i).
+\end{equation}
+This is the quantum metric of the classical-quantum state
+\begin{equation}
+\rho_{\mathrm{cq}}(\Theta)
+=\sum_i\rho_i
+\ketbra{i}{i}\otimes
+\ketbra{\psi_\Theta(z_i)}{\psi_\Theta(z_i)},
+\end{equation}
+where the orthogonal classical register labels the transaction. The weights $\rho_i$ must be declared: deployment-prevalence weights and class-balanced training weights define different geometries.
+
+\subsection{Full conditional-state QNG from LCU ancillas}
+
+For the normalized successful state
+\begin{equation}
+    \ket{\psi}=\frac{\kettildepsi}{\sqrt{\psucc}},
+\end{equation}
+let
+\begin{equation}
+    \ket{d_j}=\partial_{\beta_j}\kettildepsi=2\ket{f_j}.
+\end{equation}
+Then
+\begin{equation}
+ g_{jk}
+ =\frac{\operatorname{Re}\braket{d_j|d_k}}{\psucc}
+ -\frac{\operatorname{Re}\left[
+ \braket{d_j|\widetilde\psi}
+ \braket{\widetilde\psi|d_k}
+ \right]}{\psucc^2}.
+\label{eq:fs-lcu}
+\end{equation}
+Define measurable quantities
+\begin{align}
+ x_j&=\expect{X_j\Pi_{\bar j}}
+ =2\operatorname{Re}\braket{\widetilde\psi|f_j},\\
+ y_j&=\expect{Y_j\Pi_{\bar j}}
+ =2\operatorname{Im}\braket{\widetilde\psi|f_j},\\
+ p_j&=P(a_j=1,a_{k\neq j}=0)
+ =\braket{f_j|f_j}.
+\end{align}
+For $j\neq k$, let
+\begin{equation}
+ r_{jk}
+ =\expect{
+ \frac{X_jX_k+Y_jY_k}{2}\Pi_{\overline{jk}}
+ }
+ =2\operatorname{Re}\braket{f_j|f_k}.
+\end{equation}
+Substitution into Eq.~\eqref{eq:fs-lcu} gives
+\begin{equation}
+\boxed{
+ g_{jj}=\frac{4p_j}{\psucc}
+ -\frac{x_j^2+y_j^2}{\psucc^2}
+}
+\end{equation}
+and, for $j\neq k$,
+\begin{equation}
+\boxed{
+ g_{jk}=\frac{2r_{jk}}{\psucc}
+ -\frac{x_jx_k+y_jy_k}{\psucc^2}.
+}
+\end{equation}
+Thus the full Fubini--Study metric for the LCU mixing-angle block can be reconstructed from $Z$, $X$, $Y$, $XX$, and $YY$ ancilla settings. For $L=2$--4 this is feasible, but the setting count becomes expensive once multiplied by a supervised-learning minibatch.
+
+\section{Success-flag natural gradient: the recommended hardware metric}
+
+For the primary model, the observable output of each transaction is only the success/failure flag,
+\begin{equation}
+    P_\Theta(S=1\mid x_i)=p_{\mathrm{s},i}.
+\end{equation}
+The classical Fisher matrix of this measured Bernoulli output is
+\begin{equation}
+\boxed{
+ F_{\mu\nu}^{\mathrm{flag}}
+ =\sum_i\rho_i
+ \frac{
+ (\partial_\mu p_{\mathrm{s},i})(\partial_\nu p_{\mathrm{s},i})
+ }{
+ p_{\mathrm{s},i}(1-p_{\mathrm{s},i})
+ }.
+}
+\label{eq:flag-fisher}
+\end{equation}
+This is the natural metric for the probability distribution actually used by the classifier.
+
+To connect it to quantum geometry, consider the flagged model
+\begin{equation}
+\rho_i^\star
+=
+p_{\mathrm{s},i}\ketbra{S}{S}\otimes\ketbra{\psi_i}{\psi_i}
++
+(1-p_{\mathrm{s},i})\ketbra{F}{F}\otimes\ketbra{\perp}{\perp},
+\end{equation}
+where all failure outcomes are deliberately lumped into one symbol because the classifier does not use their internal state. In Fubini--Study normalization, the information geometry decomposes into a conditional-state part plus a success-probability part,
+\begin{equation}
+\boxed{
+ G_i^\star
+ =p_{\mathrm{s},i} g_i^{\mathrm{cond}}
+ +\frac{
+ \nabla p_{\mathrm{s},i}\nabla p_{\mathrm{s},i}^{\T}
+ }{
+ 4p_{\mathrm{s},i}(1-p_{\mathrm{s},i})
+ }.
+}
+\label{eq:flagged-qfi}
+\end{equation}
+Thus the flag Fisher in Eq.~\eqref{eq:flag-fisher} is precisely the classical Bernoulli-information component, up to the conventional factor of four relating classical Fisher and Fubini--Study/QFI normalizations.
+
+A useful hierarchy is therefore
+\begin{align}
+\text{Flag NG:}\quad
+F^{\mathrm{flag}}
+&=\sum_i
+\frac{\nabla p_{\mathrm{s},i}\nabla p_{\mathrm{s},i}^{\T}}
+{p_{\mathrm{s},i}(1-p_{\mathrm{s},i})},\\[0.4em]
+\text{Success-aware QNG:}\quad
+G^\star
+&=\sum_i\left[
+p_{\mathrm{s},i} g_i^{\mathrm{cond}}
++\frac{\nabla p_{\mathrm{s},i}\nabla p_{\mathrm{s},i}^{\T}}
+{4p_{\mathrm{s},i}(1-p_{\mathrm{s},i})}
+\right],\\[0.4em]
+\text{Bare conditional QNG:}\quad
+G^{\mathrm{cond}}
+&=\sum_i g_i^{\mathrm{cond}}.
+\end{align}
+
+\begin{keybox}
+\textbf{Recommendation.} Use the success-flag natural gradient as the main hardware-compatible optimizer; use success-aware QNG as a simulator-level ablation; use bare conditional-state QNG only as a controlled comparison.
+\end{keybox}
+
+For $L$ LCU mixing parameters, the flag metric requires $1+L$ measurement settings per datum: one $Z$-basis setting for $\psucc$ and one $X_j$ setting per layer for the gradient vector. Once $\nabla\psucc$ is known, the outer product in Eq.~\eqref{eq:flag-fisher} is formed classically. By contrast, the full conditional metric needs approximately
+\begin{equation}
+    1+2L+2\binom{L}{2}
+\end{equation}
+settings per metric refresh. At $L=4$, this is roughly 5 settings versus 21.
+
+For a minibatch, form
+\begin{equation}
+    g=\nabla_\Theta\mathcal L
+\end{equation}
+and
+\begin{equation}
+F=\sum_{i\in\B}\rho_i
+\frac{j_ij_i^{\T}}
+{\widetilde p_{\mathrm{s},i}(1-\widetilde p_{\mathrm{s},i})},
+\qquad
+j_i=\nabla_\Theta p_{\mathrm{s},i}.
+\end{equation}
+The update is
+\begin{equation}
+\boxed{
+    (F+\lambda I)\Delta\Theta=-\eta g.
+}
+\end{equation}
+Practical stabilization should include Tikhonov damping, eigenvalue truncation or a pseudoinverse, a trust-region cap, and metric refresh only every several optimizer steps.
+
+A sensible division of labor is
+\begin{equation}
+\beta:\ \text{flag-QNG},
+\qquad
+\vartheta,\omega,a,b:\ \text{Adam or parameter-shift SGD},
+\end{equation}
+where $\beta$ are the few LCU mixing angles, $\vartheta$ are branch-unitary parameters, $\omega$ are classical feature-map parameters, and $a,b$ belong to the calibration head.
+
+On noisy hardware, the conditional state is mixed and a pure-state Fubini--Study metric is no longer exact. Generalized natural-gradient constructions for noisy and nonunitary circuits exist, but their quantum Fisher information can be substantially more expensive to estimate \cite{NoisyQNG2019}. The measured-output Fisher remains well-defined under noise, which is another reason to prioritize it for the hardware experiment.
+
+\section{Data-dependent LCU gates}
+
+A useful extension lets a small classical gating network choose the LCU weights:
+\begin{equation}
+\beta_j(x)=\frac{\pi}{4}\sigma\!\left(w_j^{\T}z+b_j\right).
+\end{equation}
+The quantum processor only needs to estimate
+\begin{equation}
+    \frac{\partial\mathcal L}{\partial\beta_j}.
+\end{equation}
+Classical backpropagation then gives
+\begin{equation}
+\nabla_{w_j}\mathcal L
+=
+\frac{\partial\mathcal L}{\partial\beta_j}
+\frac{\partial\beta_j}{\partial w_j}.
+\end{equation}
+Thus the quantum measurement cost scales with the number of LCU layers $L$, rather than with the number of classical gating parameters. The metric can likewise be pulled back through the classical gate,
+\begin{equation}
+    G_\omega
+    =J_{\beta,\omega}^{\T}G_\beta J_{\beta,\omega}.
+\end{equation}
+This gives a coherent quantum mixture-of-experts architecture with a classical input-dependent gate.
+
+A required control is a matched model in which the quantum LCU block is replaced by an equally sized classical or incoherent expert combination. Without that control, the classical gate could perform most of the classification by itself.
+
+\section{Explainability}
+
+HSBC values feature attribution and circuit-level analysis \cite{HSBC2026}. The present architecture offers two complementary mechanisms.
+
+\subsection{Input-gradient attribution}
+
+For encoded feature $z_r$,
+\begin{equation}
+    A_r(z)
+    =\frac{\partial\widehat\pfraud(z)}{\partial z_r}.
+\end{equation}
+If $z_r$ enters a Pauli rotation, the derivative can be evaluated by parameter shift. A less local attribution is integrated gradients,
+\begin{equation}
+\operatorname{IG}_r(z)
+=(z_r-z_r^{(0)})
+\int_0^1
+\frac{\partial
+\widehat\pfraud\!\left(z^{(0)}+t(z-z^{(0)})\right)}
+{\partial z_r}\,dt.
+\end{equation}
+For a classical front-end $z=h_\omega(x)$,
+\begin{equation}
+    \nabla_x\widehat\pfraud
+    =J_{h_\omega}(x)^{\T}\nabla_z\widehat\pfraud.
+\end{equation}
+These quantities are local sensitivities, not causal explanations. They should be compared with SHAP or permutation-importance baselines.
+
+\subsection{Layerwise anomaly decomposition}
+
+Let
+\begin{equation}
+ h_j(x)
+ =P(a_j=1\mid a_1=\cdots=a_{j-1}=0,x)
+\end{equation}
+be the conditional failure probability at layer $j$. The probability chain rule gives
+\begin{equation}
+    \psucc(x)=\prod_{j=1}^L[1-h_j(x)],
+\end{equation}
+so
+\begin{equation}
+\boxed{
+    -\log\psucc(x)
+    =\sum_{j=1}^L -\log[1-h_j(x)].
+}
+\end{equation}
+If each LCU layer corresponds to a declared feature-group consistency test, this yields an exact additive decomposition of the anomaly score into layerwise contributions. For example:
+\begin{align}
+ j=1 &: \text{transaction/card consistency},\\
+ j=2 &: \text{address/device consistency},\\
+ j=3 &: \text{identity/behaviour consistency}.
+\end{align}
+This is not feature-level causality, but it is more interpretable than an undifferentiated variational circuit.
+
+\section{Trainability claims and theory boundary}
+
+Recent stacked-LCU theory establishes a trainability-versus-classical-simulation trade-off for free-fermion S-LCU families \cite{Khatri2026}. That theorem does not automatically cover an interacting fraud classifier containing generic $ZZ$ entanglers or hardware-efficient blocks. The companion E.ON proposal already treats this transfer as an open empirical question \cite{NguyenEON2026}.
+
+A disciplined HSBC study should therefore distinguish two model families:
+\begin{description}[leftmargin=2.4cm,style=nextline]
+\item[Theory-anchored model] Each branch is a matchgate/free-fermion circuit with data-dependent angles. This preserves contact with available S-LCU trainability theory, though small instances may remain classically tractable.
+\item[Application model] Add sparse non-Gaussian interactions, such as a small number of $ZZ$ entanglers. This may improve expressive power, but trainability becomes an empirical hypothesis.
+\end{description}
+The defensible claim is that the experiment tests whether the free-fermion trainability mechanism survives a controlled departure into an interacting, fraud-oriented model; it should not claim that S-LCU theory proves the absence of barren plateaus for the final classifier.
+
+\section{Experimental design}
+
+\subsection{Dataset choice and preprocessing}
+
+Use IEEE-CIS as the primary dataset because its roughly 3.5\% fraud rate provides enough positive examples for stratified quantum subsets and because the grouped transaction, card, address, email, device, and identity features fit the cross-view architecture \cite{HSBC2026}. Use the European Cardholder dataset as a secondary extreme-imbalance stress test. Where possible, include temporal train/test splits to probe distribution shift, as requested in the challenge \cite{HSBC2026}.
+
+\subsection{Baselines}
+
+The minimum credible baseline set is:
+\begin{enumerate}[leftmargin=*]
+\item XGBoost or LightGBM on the full engineered feature set.
+\item XGBoost or a small MLP on exactly the same reduced $d$-feature input as the quantum model.
+\item A matched unitary variational quantum classifier.
+\item A dephased/incoherent LCU mixture.
+\item Exact classical expansion of the $2^L$ LCU paths at small $L$.
+\item LCU trained by Adam/parameter shift.
+\item LCU trained by SPSA.
+\item LCU trained by flag natural gradient.
+\item Conditional-head LCU with full or block QNG.
+\end{enumerate}
+The coherent-versus-dephased comparison isolates path interference; QNG-versus-SPSA and QNG-versus-parameter-shift comparisons isolate the gradient/training contribution.
+
+\subsection{Metrics}
+
+Primary application metrics are
+\begin{equation}
+\mathrm{AUPRC},\quad
+\mathrm{AUC\!\!\!-\!ROC},\quad
+F_1,\quad
+\mathrm{precision},\quad
+\mathrm{recall}.
+\end{equation}
+Additional metrics should include Brier score or calibration error, recall at fixed false-positive rate, shots to target AUPRC, gradient cosine similarity to exact simulation, training variance across seeds, qubit count, circuit depth, and two-qubit-gate count.
+
+For the survival model, also report the distributions of $\psucc$ separately for fraud and legitimate transactions.
+
+\subsection{Matched-shot gradient experiment}
+
+For the identical circuit and initialization, compare
+\begin{equation}
+\text{SPSA}
+\quad\text{vs}\quad
+\text{parameter shift}
+\quad\text{vs}\quad
+\text{failure-sector gradient}
+\quad\text{vs}\quad
+\text{flag-QNG}.
+\end{equation}
+At fixed total quantum executions, measure
+\begin{align}
+&\norm{\widehat{\nabla\mathcal L}-\nabla\mathcal L_{\mathrm{exact}}},\\
+&\cos\!\left(\widehat{\nabla\mathcal L},\nabla\mathcal L_{\mathrm{exact}}\right),\\
+&\text{AUPRC after a fixed shot budget},\\
+&\text{iterations and shots to a target validation loss}.
+\end{align}
+This is the cleanest experiment for testing the proposed gradient mechanism independently of model architecture.
+
+\section{Hardware strategy}
+
+HSBC does not require full end-to-end training on a QPU and explicitly permits quantum execution on a stratified subset or on one component of a hybrid workflow \cite{HSBC2026}. A realistic plan is:
+\begin{enumerate}[leftmargin=*]
+\item Train and debug on an exact statevector simulator.
+\item Repeat under a Braket-compatible noise model.
+\item Validate the failure-sector gradient identities on hardware.
+\item Execute inference or short fine-tuning on a preregistered stratified IEEE-CIS subset.
+\item Use the quantum anomaly score as a second-stage re-ranker in the deployment study.
+\end{enumerate}
+A minimal near-term circuit could use
+\begin{equation}
+    n=6\text{--}8\text{ system qubits},\qquad
+    L=3\text{ LCU ancillas},
+\end{equation}
+for 9--11 qubits before any additional workspace. The three LCU layers can correspond to three semantically declared feature-view consistency tests. The first hardware implementation should train QNG only on the three mixing angles $\beta_j$.
+
+\section{Falsifiable hypotheses}
+
+The proposal should separate four hypotheses.
+
+\begin{description}[leftmargin=1.5cm]
+\item[H1:] \textbf{LCU representation hypothesis.} A coherent LCU score provides better AUPRC than the corresponding dephased mixture at matched parameters, features, and measurement budget.
+\item[H2:] \textbf{Gradient-recycling hypothesis.} Failure-sector gradient estimators reach a target validation performance with fewer circuit executions than SPSA or generalized parameter shift.
+\item[H3:] \textbf{Geometry hypothesis.} Flag natural gradient improves convergence stability or shots-to-target relative to Euclidean Adam on the same measured gradients.
+\item[H4:] \textbf{Application hypothesis.} The LCU score adds out-of-sample discrimination to a tuned classical baseline or improves a preregistered subset of difficult transactions.
+\end{description}
+H1--H3 can succeed even if H4 fails; that would still provide a technically meaningful result about the quantum mechanism. Conversely, an improved fraud metric without H1--H3 would not validate the proposed LCU/QNG mechanism.
+
+\section{What should not be imported from the E.ON formulation}
+
+The HSBC proposal should not inherit QUBO language, ground-state filtering as the business formulation, coherent polynomial gradient descent, fault-tolerant eigensolver ladders, or any claim that fraud detection itself is an energy-minimization problem. The transferable technology is only
+\begin{equation}
+\boxed{
+\text{stacked coherent LCU}
++
+\text{failure-sector derivatives}
++
+\text{parameter-space natural gradient}.
+}
+\end{equation}
+For HSBC, QNG is a training preconditioner for supervised risk. It is not imaginary-time evolution toward the ground state of a fixed Hamiltonian.
+
+\section{Proposal-ready formulation}
+
+\subsection{Suggested title}
+
+\begin{center}
+\textbf{Gradient-Recycling LCU Anomaly Filters for Imbalanced Credit-Card Fraud Detection}
+\end{center}
+
+\subsection{Core algorithm}
+
+The complete hybrid pipeline is
+\begin{equation}
+\boxed{
+ x
+ \xrightarrow{h_\omega}
+ z
+ \xrightarrow{V(z)}
+ \ket{\phi(z)}
+ \xrightarrow{\prod_j K_j}
+ \psucc(z)
+ \xrightarrow{\text{calibration/ensemble}}
+ \widehat\pfraud(x)
+}
+\end{equation}
+with
+\begin{equation}
+K_j
+=\cos^2\beta_j\,U_{j0}
++\sin^2\beta_j\,e^{i\varphi_j}U_{j1},
+\end{equation}
+and
+\begin{equation}
+\partial_{\beta_j}\psucc
+=2\expect{X_{a_j}\Pi_{\bar j}}.
+\end{equation}
+Training uses the success-flag Fisher metric
+\begin{equation}
+F^{\mathrm{flag}}
+=\sum_i\rho_i
+\frac{\nabla p_{\mathrm{s},i}\nabla p_{\mathrm{s},i}^{\T}}
+{p_{\mathrm{s},i}(1-p_{\mathrm{s},i})},
+\end{equation}
+followed by
+\begin{equation}
+    (F^{\mathrm{flag}}+\lambda I)\Delta\beta
+    =-\eta\nabla_\beta\mathcal L.
+\end{equation}
+
+\subsection{Proposal thesis}
+
+\begin{keybox}
+We use shallow coherent LCU layers as learned cross-view consistency filters for transaction data. The all-success ancilla probability defines a quantum anomaly score, while the corresponding single-failure amplitudes provide exact derivatives of the LCU mixing parameters. This permits a shot-efficient success-flag natural gradient whose metric is assembled from the same per-sample probability gradients. The approach is evaluated against tuned gradient-boosting baselines, matched unitary and incoherent-LCU models, and SPSA/parameter-shift training under identical features, splits, and quantum-execution budgets. No quantum-advantage claim is assumed; the study tests whether coherent nonunitary filtering and failure-sector geometry produce measurable improvements in fraud ranking or training efficiency.
+\end{keybox}
+
+The central design decision is therefore
+\begin{equation}
+\boxed{
+\text{Use }1-\psucc\text{ as the primary quantum fraud score.}
+}
+\end{equation}
+The postselected conditional classifier is best retained as a secondary experiment. This choice aligns the LCU mechanism, the exact gradient identity, the natural metric, and HSBC's anomaly-detection objective in a single near-term architecture.
+
+\clearpage
+\begin{thebibliography}{99}
+
+\bibitem{HSBC2026}
+HSBC,
+\emph{Quantum-Enhanced Credit Card Fraud Detection for Digital Payment Ecosystems},
+Global Quantum + AI Challenge 2026 Enterprise Challenge Statement, 2026.
+
+\bibitem{NguyenEON2026}
+H. Nguyen,
+\emph{Stacked-LCU Quantum Natural Gradient for Distribution Grid Expansion Planning},
+2026 Global Quantum + AI Challenge, E.ON Phase 1 Concept Proposal, Revision 2, 29 August 2026.
+
+\bibitem{Khatri2026}
+N. Khatri, S. Zohren, and G. Matos,
+\emph{Stacking the Deck: Tunable Trainability in Stacked LCUs},
+arXiv:2607.24686 (2026).
+
+\bibitem{Stokes2020}
+J. Stokes, J. Izaac, N. Killoran, and G. Carleo,
+\emph{Quantum Natural Gradient},
+Quantum \textbf{4}, 269 (2020).
+
+\bibitem{Wierichs2022}
+D. Wierichs, J. Izaac, C. Wang, and C.-Y. Lin,
+\emph{General Parameter-Shift Rules for Quantum Gradients},
+Quantum \textbf{6}, 677 (2022).
+
+\bibitem{NoisyQNG2019}
+B. Koczor and S. C. Benjamin,
+\emph{Quantum natural gradient generalised to noisy and non-unitary circuits},
+Physical Review A \textbf{106}, 062416 (2022); arXiv:1912.08660.
+
+\bibitem{LCUClassifier2024}
+J. Heredge, M. West, L. Hollenberg, and M. Sevior,
+\emph{Non-Unitary Quantum Machine Learning},
+arXiv:2405.17388 (2024).
+
+\end{thebibliography}
+
+\end{document}

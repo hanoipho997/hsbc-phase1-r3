@@ -1,0 +1,148 @@
+{
+  "schema": "hsbc-revision3-output-completeness-v1",
+  "status": "VALIDATION_ONLY_PLUS_EXISTING_SEALED_AGGREGATES",
+  "protocol": {
+    "path": "docs/hsbc_challenge_revision3_output_protocol_v1.md",
+    "sha256": "3a6547b86a632268e926a7de484a101e08fe46fc7ff59fe11b5bdc0e37dc8236"
+  },
+  "validation_probability_output": {
+    "rows": 118108,
+    "frauds": 4611,
+    "prevalence": 0.03904053916754157,
+    "backbone_brier": 0.0213484981520812,
+    "constant_prevalence_brier": 0.03751637546904924,
+    "equal_frequency_calibration": {
+      "bins": 10,
+      "ece": 0.012702685947086017,
+      "bin_rows": [
+        {
+          "n": 11811,
+          "mean_probability": 0.00045467046137318045,
+          "observed_fraud_rate": 0.001016002032004064,
+          "absolute_gap": 0.0005613315706308835
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.0008515781796846227,
+          "observed_fraud_rate": 0.0009313351960037253,
+          "absolute_gap": 7.97570163191026e-05
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.001255822466416163,
+          "observed_fraud_rate": 0.00127000254000508,
+          "absolute_gap": 1.4180073588917e-05
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.0017519682320775141,
+          "observed_fraud_rate": 0.003048006096012192,
+          "absolute_gap": 0.0012960378639346778
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.002408176524726505,
+          "observed_fraud_rate": 0.00381000762001524,
+          "absolute_gap": 0.0014018310952887349
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.0033047935252451845,
+          "observed_fraud_rate": 0.00508001016002032,
+          "absolute_gap": 0.0017752166347751357
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.004649544494833923,
+          "observed_fraud_rate": 0.009398018796037593,
+          "absolute_gap": 0.00474847430120367
+        },
+        {
+          "n": 11811,
+          "mean_probability": 0.007055679890610616,
+          "observed_fraud_rate": 0.01778003556007112,
+          "absolute_gap": 0.010724355669460506
+        },
+        {
+          "n": 11810,
+          "mean_probability": 0.013097231024361949,
+          "observed_fraud_rate": 0.043861134631668075,
+          "absolute_gap": 0.030763903607306124
+        },
+        {
+          "n": 11810,
+          "mean_probability": 0.228565068302092,
+          "observed_fraud_rate": 0.304233700254022,
+          "absolute_gap": 0.07566863195193002
+        }
+      ]
+    },
+    "binary_at_frozen_t_hi": {
+      "threshold": 0.9941770366666827,
+      "tp": 223,
+      "fp": 14,
+      "fn": 4388,
+      "tn": 113483,
+      "precision": 0.9409282700421941,
+      "recall": 0.04836261114725656,
+      "f1": 0.091996699669967
+    },
+    "interpretation": "Descriptive validation evidence only. Brier/ECE assess the frozen backbone probability output; no posthoc recalibration was fitted."
+  },
+  "sealed_test_binary_from_existing_aggregates": {
+    "tp": 167,
+    "fp": 0,
+    "fn": 3897,
+    "tn": 114044,
+    "precision": 1.0,
+    "recall": 0.04109251968503937,
+    "f1": 0.07894114866461831,
+    "threshold": 0.9941770366666827,
+    "rows": 118108,
+    "frauds": 4064,
+    "source": "derived only from ingest_manifest_v1.json + unblind_real_v1.json",
+    "sealed_test_reopened": false
+  },
+  "illustrative_validation_explanation": {
+    "selection": "largest five-seed-mean P(any ancilla failure) within validation review band",
+    "representative_case_claim": false,
+    "backbone_probability": 0.9071301333258963,
+    "routing_region": "review_band",
+    "layer_pairs": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C"
+      ]
+    ],
+    "mean_layer_failure_marginals": [
+      0.3470802942270487,
+      0.1361520790247812,
+      0.5472557604904816
+    ],
+    "mean_joint_all_pass_probability": 0.2193880824651358,
+    "mean_probability_any_failure": 0.7806119175348643,
+    "five_seed_probability_any_failure_range": [
+      0.7427775400901943,
+      0.8082223040010998
+    ],
+    "most_likely_nonzero_pattern_little_endian": "001",
+    "most_likely_nonzero_pattern_probability": 0.34679218944299633,
+    "pattern_bit_order": "layer 0, layer 1, layer 2; 1 means that ancilla failed",
+    "fraud_label_used_for_selection": false,
+    "fraud_label_emitted": false
+  },
+  "data_release_classification": "PUBLIC_AGGREGATE_SUMMARY_FROM_PRIVATE_LICENSED_INPUTS",
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

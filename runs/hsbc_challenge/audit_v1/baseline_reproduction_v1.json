@@ -1,0 +1,49 @@
+{
+  "all_match": true,
+  "files": {
+    "exp_b2_addendum.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "3ade6848a9d4792a1807058b4d91361c7356c674de0c70dc721969256353e242",
+      "status": "MATCH"
+    },
+    "exp_b_scorer.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "09b5df59a4a21ad34526eea29b78d31c53141b92259eca05dd32b6b71f3b4cdd",
+      "status": "MATCH"
+    },
+    "exp_c_dequantization.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "e1a653025cd7b397009330ea9573f1fa00e78187c8bf7305c5379ffa5d6f09a8",
+      "status": "MATCH"
+    },
+    "exp_d_alignment.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "d03388c7699844aa5e4b12876672ec2e7b852701656ba50b5e612908c6467203",
+      "status": "MATCH"
+    },
+    "exp_e_depth.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "b6294a124e7fb3960c171490a44fed64886738642d35f0f48c1eab6c274056f4",
+      "status": "MATCH"
+    },
+    "exp_f_bottlenecks.json": {
+      "comparison": "recursive; wall_seconds excluded; floats rtol=1e-12 atol=1e-14",
+      "differences": [],
+      "reproduced_sha256": "7f3188e9fe22117d17dd62061c79938dfa726eb8e068e0771a8502f984583d24",
+      "status": "MATCH"
+    }
+  },
+  "protocol": "isolated exact-script rerun using repo .venv and linked source NPZ",
+  "reproduced_root": "/private/tmp/hsbc_audit_repro_20260830/runs/hsbc_challenge/fit_v0",
+  "source_root": "<PRIVATE_MONOREPO_ROOT>/runs/hsbc_challenge/fit_v0",
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

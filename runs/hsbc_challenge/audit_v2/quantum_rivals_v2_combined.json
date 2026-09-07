@@ -1,0 +1,403 @@
+{
+  "analysis_scope": "post-outcome deterministic application of frozen section-5 rules; no training, tuning, selection, or source-table loading",
+  "paired_bootstrap": {
+    "auprc_intervals": {
+      "HAE_direct4_classical": [
+        0.025280333022627468,
+        0.06810740567544156
+      ],
+      "HAE_hybrid_quantum": [
+        0.04072363317957511,
+        0.10567088989799707
+      ],
+      "HAE_width8_classical": [
+        0.38972564451252945,
+        0.6795199932689728
+      ],
+      "QNN_dense_head": [
+        0.5971598182177491,
+        0.8213046099799395
+      ],
+      "QNN_frozen_quantum": [
+        0.5900348730714777,
+        0.8122021005567215
+      ],
+      "QNN_trainable_quantum": [
+        0.578472313831586,
+        0.8042355877856233
+      ],
+      "S1_analytic": [
+        0.5684714934858485,
+        0.8001449183002214
+      ],
+      "S2_L1_seed500": [
+        0.5804545062715342,
+        0.8080576917114181
+      ],
+      "VQC_entangling_mean5": [
+        0.000966156540365177,
+        0.04043305922890631
+      ],
+      "VQC_no_entanglement_mean5": [
+        0.012931477882899015,
+        0.02341872144949791
+      ],
+      "XGB_subset": [
+        0.624262906003048,
+        0.8509565793290359
+      ],
+      "balanced_logistic": [
+        0.6143597532824678,
+        0.8210237610585599
+      ],
+      "classical_RBF_Nystrom_OCSVM_twin": [
+        0.0007341149484240924,
+        0.0012255116055920857
+      ],
+      "classical_RBF_Nystrom_twin": [
+        0.6184940040883017,
+        0.8232007964126563
+      ],
+      "classical_RBF_SVC_twin": [
+        0.5892841355820176,
+        0.8019431307177769
+      ],
+      "product_fidelity_QSVC": [
+        0.5819173900901767,
+        0.8007344056104716
+      ],
+      "projected_ring_IQP_SVC": [
+        0.4823773108344012,
+        0.7680041310634749
+      ],
+      "ring_IQP_fidelity_Nystrom": [
+        0.3977402723348606,
+        0.7051009563373701
+      ],
+      "ring_IQP_fidelity_Nystrom_OCSVM": [
+        0.0027046255848862696,
+        0.008314341563499797
+      ],
+      "trash_QAE_mean5": [
+        0.000765764080421668,
+        0.0017040416741699275
+      ]
+    },
+    "bootstrap": "paired Poisson(1) test-row weights",
+    "comparisons": {
+      "HAE_hybrid_quantum_minus_HAE_direct4_classical": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.011041717771191051,
+          0.04968773845209636
+        ],
+        "left": "HAE_hybrid_quantum",
+        "point": 0.024682723080766168,
+        "practical_tie_margin": 0.01,
+        "right": "HAE_direct4_classical",
+        "status": "AVAILABLE"
+      },
+      "HAE_hybrid_quantum_minus_HAE_width8_classical": {
+        "decision": "RIGHT_WINS",
+        "interval": [
+          -0.5968582082648457,
+          -0.3350666507985374
+        ],
+        "left": "HAE_hybrid_quantum",
+        "point": -0.4600802767959134,
+        "practical_tie_margin": 0.01,
+        "right": "HAE_width8_classical",
+        "status": "AVAILABLE"
+      },
+      "QNN_trainable_quantum_minus_QNN_dense_head": {
+        "decision": "RIGHT_WINS",
+        "interval": [
+          -0.031856892697175634,
+          -0.00021123224892387216
+        ],
+        "left": "QNN_trainable_quantum",
+        "point": -0.014217477106722387,
+        "practical_tie_margin": 0.01,
+        "right": "QNN_dense_head",
+        "status": "AVAILABLE"
+      },
+      "QNN_trainable_quantum_minus_QNN_frozen_quantum": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.028629298437313943,
+          0.014369542382911667
+        ],
+        "left": "QNN_trainable_quantum",
+        "point": -0.005607581682870677,
+        "practical_tie_margin": 0.01,
+        "right": "QNN_frozen_quantum",
+        "status": "AVAILABLE"
+      },
+      "S1_analytic_minus_HAE_hybrid_quantum": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.5062244480705399,
+          0.7279342391203363
+        ],
+        "left": "S1_analytic",
+        "point": 0.6313435732315504,
+        "practical_tie_margin": 0.01,
+        "right": "HAE_hybrid_quantum",
+        "status": "AVAILABLE"
+      },
+      "S1_analytic_minus_ring_IQP_fidelity_Nystrom_OCSVM": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.5641278204302809,
+          0.7965043047609417
+        ],
+        "left": "S1_analytic",
+        "point": 0.6911824633348642,
+        "practical_tie_margin": 0.01,
+        "right": "ring_IQP_fidelity_Nystrom_OCSVM",
+        "status": "AVAILABLE"
+      },
+      "S1_analytic_minus_trash_QAE_mean5": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.5674574435001324,
+          0.7992477838239256
+        ],
+        "left": "S1_analytic",
+        "point": 0.6946642400593026,
+        "practical_tie_margin": 0.01,
+        "right": "trash_QAE_mean5",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_QNN_dense_head": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.03733782972536645,
+          0.0028777950359449686
+        ],
+        "left": "S2_L1_seed500",
+        "point": -0.016024730780488383,
+        "practical_tie_margin": 0.01,
+        "right": "QNN_dense_head",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_QNN_trainable_quantum": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.03168615438328255,
+          0.031186290343289114
+        ],
+        "left": "S2_L1_seed500",
+        "point": -0.001807253673765996,
+        "practical_tie_margin": 0.01,
+        "right": "QNN_trainable_quantum",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_VQC_entangling_mean5": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.5697286215768509,
+          0.8045634444437928
+        ],
+        "left": "S2_L1_seed500",
+        "point": 0.6992767579305513,
+        "practical_tie_margin": 0.01,
+        "right": "VQC_entangling_mean5",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_XGB_subset": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.10342014491246203,
+          0.02059059410345613
+        ],
+        "left": "S2_L1_seed500",
+        "point": -0.04365172633846759,
+        "practical_tie_margin": 0.01,
+        "right": "XGB_subset",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_balanced_logistic": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.062449094746474865,
+          0.019972159998212984
+        ],
+        "left": "S2_L1_seed500",
+        "point": -0.02392654814692452,
+        "practical_tie_margin": 0.01,
+        "right": "balanced_logistic",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_classical_RBF_Nystrom_twin": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.05952942101096943,
+          0.015913623138641007
+        ],
+        "left": "S2_L1_seed500",
+        "point": -0.024857472562024974,
+        "practical_tie_margin": 0.01,
+        "right": "classical_RBF_Nystrom_twin",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_product_fidelity_QSVC": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.04789578801528103,
+          0.06673136915040277
+        ],
+        "left": "S2_L1_seed500",
+        "point": 0.004171039539140664,
+        "practical_tie_margin": 0.01,
+        "right": "product_fidelity_QSVC",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_projected_ring_IQP_SVC": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.018073184878896153,
+          0.15863395716757653
+        ],
+        "left": "S2_L1_seed500",
+        "point": 0.07374944956511231,
+        "practical_tie_margin": 0.01,
+        "right": "projected_ring_IQP_SVC",
+        "status": "AVAILABLE"
+      },
+      "S2_L1_seed500_minus_ring_IQP_fidelity_Nystrom": {
+        "decision": "LEFT_WINS",
+        "interval": [
+          0.05496646634015248,
+          0.26533595815526534
+        ],
+        "left": "S2_L1_seed500",
+        "point": 0.16317872321229243,
+        "practical_tie_margin": 0.01,
+        "right": "ring_IQP_fidelity_Nystrom",
+        "status": "AVAILABLE"
+      },
+      "VQC_entangling_mean5_minus_VQC_no_entanglement_mean5": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.020271961485288207,
+          0.022721426512115627
+        ],
+        "left": "VQC_entangling_mean5",
+        "point": -0.011052509757891673,
+        "practical_tie_margin": 0.01,
+        "right": "VQC_no_entanglement_mean5",
+        "status": "AVAILABLE"
+      },
+      "VQC_entangling_mean5_minus_balanced_logistic": {
+        "decision": "RIGHT_WINS",
+        "interval": [
+          -0.8169560739549864,
+          -0.6054894548874475
+        ],
+        "left": "VQC_entangling_mean5",
+        "point": -0.7232033060774758,
+        "practical_tie_margin": 0.01,
+        "right": "balanced_logistic",
+        "status": "AVAILABLE"
+      },
+      "product_fidelity_QSVC_minus_classical_RBF_SVC_twin": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.03040400870680417,
+          0.013517607966350488
+        ],
+        "left": "product_fidelity_QSVC",
+        "point": -0.004219727308005017,
+        "practical_tie_margin": 0.01,
+        "right": "classical_RBF_SVC_twin",
+        "status": "AVAILABLE"
+      },
+      "projected_ring_IQP_SVC_minus_classical_RBF_SVC_twin": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          -0.1600100189373709,
+          0.017963136561552438
+        ],
+        "left": "projected_ring_IQP_SVC",
+        "point": -0.07379813733397667,
+        "practical_tie_margin": 0.01,
+        "right": "classical_RBF_SVC_twin",
+        "status": "AVAILABLE"
+      },
+      "ring_IQP_fidelity_Nystrom_OCSVM_minus_classical_RBF_Nystrom_OCSVM_twin": {
+        "decision": "PRACTICAL_TIE",
+        "interval": [
+          0.001870918498480302,
+          0.007264071422468161
+        ],
+        "left": "ring_IQP_fidelity_Nystrom_OCSVM",
+        "point": 0.00357225551703367,
+        "practical_tie_margin": 0.01,
+        "right": "classical_RBF_Nystrom_OCSVM_twin",
+        "status": "AVAILABLE"
+      },
+      "ring_IQP_fidelity_Nystrom_minus_classical_RBF_Nystrom_twin": {
+        "decision": "RIGHT_WINS",
+        "interval": [
+          -0.2838554901322208,
+          -0.07860341447749154
+        ],
+        "left": "ring_IQP_fidelity_Nystrom",
+        "point": -0.1880361957743174,
+        "practical_tie_margin": 0.01,
+        "right": "classical_RBF_Nystrom_twin",
+        "status": "AVAILABLE"
+      }
+    },
+    "interval": "98.75% two-sided simultaneous interval (Bonferroni-equivalent for four co-primary families)",
+    "n_boot": 2000,
+    "omitted_nonfinite_score_arrays": [],
+    "point_auprc": {
+      "HAE_direct4_classical": 0.0396626584333705,
+      "HAE_hybrid_quantum": 0.06434538151413667,
+      "HAE_width8_classical": 0.5244256583100501,
+      "QNN_dense_head": 0.7217831378856681,
+      "QNN_frozen_quantum": 0.7131732424618163,
+      "QNN_trainable_quantum": 0.7075656607789457,
+      "S1_analytic": 0.6956889547456871,
+      "S2_L1_seed500": 0.7057584071051797,
+      "VQC_entangling_mean5": 0.006481649174628344,
+      "VQC_no_entanglement_mean5": 0.017534158932520017,
+      "XGB_subset": 0.7494101334436473,
+      "balanced_logistic": 0.7296849552521042,
+      "classical_RBF_Nystrom_OCSVM_twin": 0.0009342358937892571,
+      "classical_RBF_Nystrom_twin": 0.7306158796672046,
+      "classical_RBF_SVC_twin": 0.705807094874044,
+      "product_fidelity_QSVC": 0.701587367566039,
+      "projected_ring_IQP_SVC": 0.6320089575400674,
+      "ring_IQP_fidelity_Nystrom": 0.5425796838928872,
+      "ring_IQP_fidelity_Nystrom_OCSVM": 0.004506491410822927,
+      "trash_QAE_mean5": 0.0010247146863845613
+    },
+    "seed": 20260831
+  },
+  "preoutcome_lock_sha256": "79e87c64e0cf09819d9be72b7213fb6e0636787bffddbecba6c20d7f23a765e4",
+  "protocol_sha256": "de10a4640e310986ea94ed52a35a7edba2bb32fceac7e84116dc2c0bc5ebc115",
+  "reporting_cautions": [
+    "Named implementations only; no family-wide winner claim.",
+    "All one-class rows remain conditional on the supervised feature screen.",
+    "Exact statevector results are not shot-matched or hardware advantage evidence.",
+    "The trash-QAE runner has no standalone classical-AE twin; the hybrid-AE runner supplies separate matched bottleneck twins."
+  ],
+  "schema": "hsbc-quantum-rivals-v2-combined",
+  "source_artifacts": {
+    "runs/hsbc_challenge/audit_v2/hybrid_qml_v2.json": "a6841da5bb73224d30e3cc078c00b979fe97fbc331467fb608ca0f6425604ebe",
+    "runs/hsbc_challenge/audit_v2/quantum_kernels_v2.json": "8df789a4076dfceae7f3e6dda4eae5696b6c15d0cf72e2138ed312830c190d85",
+    "runs/hsbc_challenge/audit_v2/vqa_qae_v2.json": "4f018a1f78d8cc94604d3fc41a8bd94972043285575704b7414d2636f667750a"
+  },
+  "status": "COMPLETE",
+  "test_frauds": 99,
+  "test_resampled": false,
+  "test_rows": 56962,
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

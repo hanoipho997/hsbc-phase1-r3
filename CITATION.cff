@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: 'If you use this work, please cite it using this metadata.'
+title: 'Coherent Cross-View Syndromes for Credit-Card Fraud: Mechanism Validation Under Classical Stop Gates'
+type: software
+authors:
+  - family-names: Nguyen
+    given-names: Ha Cong
+repository-code: 'https://github.com/hanoipho997/hsbc-phase1-r3'
+doi: 'PENDING'
+commit: 'PENDING'
+version: 'Revision 3'
+date-released: '2026-09-08'

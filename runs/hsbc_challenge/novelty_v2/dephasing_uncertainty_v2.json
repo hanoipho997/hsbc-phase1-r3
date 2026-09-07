@@ -1,0 +1,197 @@
+{
+  "schema": "hsbc-dephasing-uncertainty-audit-v2",
+  "status": "POST_OUTCOME_CORRECTION_NOT_PREREGISTRATION",
+  "inputs": {
+    "curves": {
+      "sha256": "1a6e7217c121df686fa6ecc4b16c57acddd000302538aa62917de7a6bbd839df"
+    },
+    "reduced": {
+      "sha256": "9cf6022e3a73b26029f66e9874571dc6150662afeb711ea6f8c0bdadb31bc14f"
+    },
+    "classification": "PUBLIC_AGGREGATE_SUMMARY_FROM_PRIVATE_LICENSED_INPUTS"
+  },
+  "analysis": {
+    "shots_per_row_per_endpoint": 2000,
+    "bootstrap_replicates": 10000,
+    "rng_seed": 20260904,
+    "row_bootstrap": "m rows sampled with replacement; duplicates retained",
+    "shot_bootstrap": "independent multinomial redraw inside every endpoint and row replicate",
+    "multiplicity": {
+      "intended_family": "2 primary contrasts x 5 model seeds",
+      "family_size": 10,
+      "familywise_alpha": 0.05,
+      "method": "Bonferroni",
+      "per_interval_confidence": 0.995
+    }
+  },
+  "ideal_full_width": {
+    "seeds": {
+      "900": {
+        "estimand_exact_W0_minus_W1": 0.07395565252114975,
+        "nested_row_and_shot_bootstrap": {
+          "replicates": 10000,
+          "confidence": 0.995,
+          "interval": [
+            0.020621587416897715,
+            0.11658501780016521
+          ],
+          "mean": 0.0719142831969564,
+          "duplicates_retained": true
+        },
+        "shot_only_descriptive_97_5pct": {
+          "interval": [
+            0.07011031722069454,
+            0.07786190777450218
+          ],
+          "mean": 0.07396172255460476
+        }
+      },
+      "901": {
+        "estimand_exact_W0_minus_W1": 0.03173941808568087,
+        "nested_row_and_shot_bootstrap": {
+          "replicates": 10000,
+          "confidence": 0.995,
+          "interval": [
+            0.01318392588935597,
+            0.0461390792212501
+          ],
+          "mean": 0.03078574619101179,
+          "duplicates_retained": true
+        },
+        "shot_only_descriptive_97_5pct": {
+          "interval": [
+            0.029642025797462744,
+            0.033887848152478466
+          ],
+          "mean": 0.03174632977431397
+        }
+      },
+      "902": {
+        "estimand_exact_W0_minus_W1": 0.05307701625113599,
+        "nested_row_and_shot_bootstrap": {
+          "replicates": 10000,
+          "confidence": 0.995,
+          "interval": [
+            0.015832982281484748,
+            0.08164295985171142
+          ],
+          "mean": 0.05113613496514386,
+          "duplicates_retained": true
+        },
+        "shot_only_descriptive_97_5pct": {
+          "interval": [
+            0.050305949523867285,
+            0.05595977942748466
+          ],
+          "mean": 0.05308251805535974
+        }
+      },
+      "903": {
+        "estimand_exact_W0_minus_W1": 0.05526652161005181,
+        "nested_row_and_shot_bootstrap": {
+          "replicates": 10000,
+          "confidence": 0.995,
+          "interval": [
+            0.014847333081471433,
+            0.08727950155854647
+          ],
+          "mean": 0.053654082597896925,
+          "duplicates_retained": true
+        },
+        "shot_only_descriptive_97_5pct": {
+          "interval": [
+            0.05197140008408313,
+            0.05858476295413332
+          ],
+          "mean": 0.05525275516225195
+        }
+      },
+      "904": {
+        "estimand_exact_W0_minus_W1": 0.04489055393332681,
+        "nested_row_and_shot_bootstrap": {
+          "replicates": 10000,
+          "confidence": 0.995,
+          "interval": [
+            0.014128838332173902,
+            0.06890416680020717
+          ],
+          "mean": 0.043374110465657825,
+          "duplicates_retained": true
+        },
+        "shot_only_descriptive_97_5pct": {
+          "interval": [
+            0.042205031012211,
+            0.047487165749299814
+          ],
+          "mean": 0.04488097668171672
+        }
+      }
+    },
+    "all_five_lower_bounds_above_zero_at_corrected_confidence": true,
+    "verdict": "RESOLVABLE_IN_IDEAL_SIMULATION"
+  },
+  "saved_noise_count_sensitivity_seed900_only": {
+    "low": {
+      "observed_W_hat0_minus_W_hat1": 0.015051389142151723,
+      "conditional_plugin_nested_bootstrap_97_5pct": {
+        "replicates": 10000,
+        "interval": [
+          0.005957443382452316,
+          0.022121929166567914
+        ],
+        "mean": 0.014475092668804916,
+        "duplicates_retained": true
+      },
+      "shots_per_row_per_endpoint": 2000,
+      "status": "EXPLORATORY_PLUGIN_SENSITIVITY_ONLY",
+      "limitation": "The v1 artifact saved one realized count table, not exact noisy probabilities. Multinomial draws from the observed frequencies are conditional plug-in sensitivity and cannot repair the missing four noise seeds or establish a confirmatory device-noise result."
+    },
+    "high": {
+      "observed_W_hat0_minus_W_hat1": 0.0001399912773927287,
+      "conditional_plugin_nested_bootstrap_97_5pct": {
+        "replicates": 10000,
+        "interval": [
+          -0.00022957871686599303,
+          0.0004925920065627574
+        ],
+        "mean": 0.0001224115325845887,
+        "duplicates_retained": true
+      },
+      "shots_per_row_per_endpoint": 2000,
+      "status": "EXPLORATORY_PLUGIN_SENSITIVITY_ONLY",
+      "limitation": "The v1 artifact saved one realized count table, not exact noisy probabilities. Multinomial draws from the observed frequencies are conditional plug-in sensitivity and cannot repair the missing four noise seeds or establish a confirmatory device-noise result."
+    }
+  },
+  "reduced_instance": {
+    "estimand_exact_W0_minus_W1": 0.01982849023266758,
+    "nested_row_and_shot_bootstrap": {
+      "replicates": 10000,
+      "confidence": 0.95,
+      "interval": [
+        0.003372630744390052,
+        0.035859344704271774
+      ],
+      "mean": 0.017347671969098838,
+      "duplicates_retained": true
+    },
+    "shot_only_descriptive_97_5pct": {
+      "interval": [
+        0.015927277362788535,
+        0.024100850118586096
+      ],
+      "mean": 0.01980826054077396
+    },
+    "status": "EXPLORATORY_POST_OUTCOME_DESIGN_CANDIDATE",
+    "limitations": [
+      "Eight validation-derived rows were selected after observing the full-width run.",
+      "The circuit parameters are a single random seed, not a trained Engine-A model.",
+      "No QPU, managed-simulator, native-device compile, or device-calibrated power analysis was run."
+    ]
+  },
+  "claim_boundary": "The corrected analysis supports ideal-simulator resolvability of between-row syndrome variation. It does not support a QPU result, a device-noise family claim, fraud lift, runtime advantage, or classical hardness.",
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

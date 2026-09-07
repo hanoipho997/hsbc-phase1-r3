@@ -1,0 +1,249 @@
+{
+  "schema": "hsbc-novelty-gradient-recycling-v1",
+  "results": {
+    "ULB_n8_L1_seed500": {
+      "n_layers": 1,
+      "rows": 512,
+      "mean_ps": 0.92842293623444,
+      "layers": {
+        "0": {
+          "beta": 0.574507614419939,
+          "a0": 0.7046930531364801,
+          "mean_p_single_failure": 0.07157706376556021,
+          "mean_x_readout": -0.06423476674588874,
+          "B1_readout_vs_finite_difference_max_dev": 2.2278079381266025e-10,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 1.4051260155412137e-15,
+          "B2_uncompute_shift_gradient_max_dev": 2.8102520310824275e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 0.0,
+          "B3_single_frequency_rule_max_dev": 2.2278057176805532e-10,
+          "B3_two_frequency_rule_max_dev": 2.2278101585726517e-10,
+          "B3_frequency2_amplitude_max": 1.1379786002407855e-15,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 3.973549332055587,
+            "E1p_uncompute_shift_two_circuits": 3.973549332055586,
+            "E2_single_frequency_shift": 0.6140572786304381,
+            "E2_two_frequency_shift": 0.9210859179456576,
+            "E3_hadamard_test": 3.973549332055586
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 39735.49332055586,
+            "E1p_uncompute_shift_two_circuits": 39735.493320555855,
+            "E2_single_frequency_shift": 6140.572786304381,
+            "E2_two_frequency_shift": 9210.859179456576,
+            "E3_hadamard_test": 39735.493320555855
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 6.470975054506296,
+          "valid_physical_shift_rule": "single_frequency_2point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.0008786507313502012,
+            "E1_predicted_mse": 0.0009945794041700854,
+            "E2_mse": 0.00010831487432833805,
+            "E2_predicted_mse": 0.0001406080183157124
+          }
+        }
+      }
+    },
+    "ULB_n8_L2_expB": {
+      "n_layers": 2,
+      "rows": 512,
+      "mean_ps": 0.8037349358638421,
+      "layers": {
+        "0": {
+          "beta": 0.6185626866249979,
+          "a0": 0.6637568573530954,
+          "mean_p_single_failure": 0.16148989850144904,
+          "mean_x_readout": -0.11023511437179923,
+          "B1_readout_vs_finite_difference_max_dev": 1.5381751428122925e-10,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 1.6375789613221059e-15,
+          "B2_uncompute_shift_gradient_max_dev": 3.2751579226442118e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 8.881784197001252e-16,
+          "B3_single_frequency_rule_max_dev": 0.0035494038714458664,
+          "B3_two_frequency_rule_max_dev": 1.5381668161396078e-10,
+          "B3_frequency2_amplitude_max": 0.004284509589223273,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 3.8094914052435485,
+            "E1p_uncompute_shift_two_circuits": 3.9416944247014225,
+            "E2_single_frequency_shift": 1.6733001273784724,
+            "E2_two_frequency_shift": 2.509327587195199,
+            "E3_hadamard_test": 3.948592067782384
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 38094.91405243548,
+            "E1p_uncompute_shift_two_circuits": 39416.944247014224,
+            "E2_single_frequency_shift": 16733.001273784725,
+            "E2_two_frequency_shift": 25093.275871951988,
+            "E3_hadamard_test": 39485.92067782384
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 1.5181323573227072,
+          "valid_physical_shift_rule": "two_frequency_4point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.0007491568278381105,
+            "E1_predicted_mse": 0.0009554091151912178,
+            "E2_mse": 0.0005070719070965509,
+            "E2_predicted_mse": 0.0006144582274142045
+          }
+        },
+        "1": {
+          "beta": 0.8474000581592919,
+          "a0": 0.4381568830138725,
+          "mean_p_single_failure": 0.023833694773677003,
+          "mean_x_readout": 0.0059414218339253365,
+          "B1_readout_vs_finite_difference_max_dev": 8.896788210657758e-11,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 1.078998002057574e-15,
+          "B2_uncompute_shift_gradient_max_dev": 2.157996004115148e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 5.551115123125783e-16,
+          "B3_single_frequency_rule_max_dev": 8.896616776610244e-11,
+          "B3_two_frequency_rule_max_dev": 8.896633039642832e-11,
+          "B3_frequency2_amplitude_max": 8.244273319579776e-16,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 3.3100737419018205,
+            "E1p_uncompute_shift_two_circuits": 3.8724801130077715,
+            "E2_single_frequency_shift": 2.3656660520513797,
+            "E2_two_frequency_shift": 3.5484990780770707,
+            "E3_hadamard_test": 3.9997992193517438
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 33100.7374190182,
+            "E1p_uncompute_shift_two_circuits": 38724.801130077714,
+            "E2_single_frequency_shift": 23656.660520513797,
+            "E2_two_frequency_shift": 35484.990780770706,
+            "E3_hadamard_test": 39997.992193517435
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 1.3992142885220424,
+          "valid_physical_shift_rule": "single_frequency_2point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.0009699597672029592,
+            "E1_predicted_mse": 0.0008292335314809238,
+            "E2_mse": 0.00041059497018883093,
+            "E2_predicted_mse": 0.0005862268534603736
+          }
+        }
+      }
+    },
+    "EngineA_n12_L3_seed900": {
+      "n_layers": 3,
+      "rows": 256,
+      "mean_ps": 0.4983301952869534,
+      "layers": {
+        "0": {
+          "beta": 1.0005702535875913,
+          "a0": 0.2914081870454306,
+          "mean_p_single_failure": 0.12771999672310147,
+          "mean_x_readout": 0.11158174293664186,
+          "B1_readout_vs_finite_difference_max_dev": 2.6399313290959014e-10,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 2.858824288409778e-15,
+          "B2_uncompute_shift_gradient_max_dev": 5.717648576819556e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 3.3306690738754696e-16,
+          "B3_single_frequency_rule_max_dev": 0.055133152489156956,
+          "B3_two_frequency_rule_max_dev": 2.6400165387130414e-10,
+          "B3_frequency2_amplitude_max": 0.06655160207148865,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 2.4478405849690277,
+            "E1p_uncompute_shift_two_circuits": 3.3539336849041748,
+            "E2_single_frequency_shift": 3.795373577445372,
+            "E2_two_frequency_shift": 5.6923643724164705,
+            "E3_hadamard_test": 3.9436398169288083
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 24478.405849690276,
+            "E1p_uncompute_shift_two_circuits": 33539.33684904175,
+            "E2_single_frequency_shift": 37953.73577445372,
+            "E2_two_frequency_shift": 56923.6437241647,
+            "E3_hadamard_test": 39436.398169288084
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 0.4300217668479807,
+          "valid_physical_shift_rule": "two_frequency_4point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.00045981666435629403,
+            "E1_predicted_mse": 0.0006191361664222638,
+            "E2_mse": 0.0018548592130028139,
+            "E2_predicted_mse": 0.001418036149132646
+          }
+        },
+        "1": {
+          "beta": 0.43679554421726435,
+          "a0": 0.8210388112616952,
+          "mean_p_single_failure": 0.09104483568076416,
+          "mean_x_readout": -0.15264953457789934,
+          "B1_readout_vs_finite_difference_max_dev": 2.2218943351859366e-10,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 3.0531133177191805e-15,
+          "B2_uncompute_shift_gradient_max_dev": 6.106226635438361e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 3.3306690738754696e-16,
+          "B3_single_frequency_rule_max_dev": 0.0023493801715976925,
+          "B3_two_frequency_rule_max_dev": 2.2218835105114465e-10,
+          "B3_frequency2_amplitude_max": 0.002835952937542442,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 2.2563803236293336,
+            "E1p_uncompute_shift_two_circuits": 3.1952270873628206,
+            "E2_single_frequency_shift": 3.7841375864940456,
+            "E2_two_frequency_shift": 5.676261277900265,
+            "E3_hadamard_test": 3.8988801997584632
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 22563.803236293334,
+            "E1p_uncompute_shift_two_circuits": 31952.270873628204,
+            "E2_single_frequency_shift": 37841.375864940455,
+            "E2_two_frequency_shift": 56762.612779002644,
+            "E3_hadamard_test": 38988.80199758463
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 0.39751170940883873,
+          "valid_physical_shift_rule": "two_frequency_4point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.0005347301684158312,
+            "E1_predicted_mse": 0.000574890708575373,
+            "E2_mse": 0.0008327758773631911,
+            "E2_predicted_mse": 0.0014115288970186616
+          }
+        },
+        "2": {
+          "beta": 0.7762098606245187,
+          "a0": 0.5091877856339183,
+          "mean_p_single_failure": 0.16773342287470158,
+          "mean_x_readout": -0.006165435935489759,
+          "B1_readout_vs_finite_difference_max_dev": 3.142947100492899e-10,
+          "B2_uncompute_shift_equals_X_readout_max_dev": 3.559652572704408e-15,
+          "B2_uncompute_shift_gradient_max_dev": 7.119305145408816e-15,
+          "B2_unshifted_reproduces_ps_max_dev": 4.440892098500626e-16,
+          "B3_single_frequency_rule_max_dev": 3.1429303777585904e-10,
+          "B3_two_frequency_rule_max_dev": 3.142936258471174e-10,
+          "B3_frequency2_amplitude_max": 2.551344552292889e-15,
+          "B4_var_times_N_mean": {
+            "E1_X_readout": 2.664085793214732,
+            "E1p_uncompute_shift_two_circuits": 3.5402884979774036,
+            "E2_single_frequency_shift": 3.820375845413273,
+            "E2_two_frequency_shift": 5.730563768119913,
+            "E3_hadamard_test": 3.999831320568113
+          },
+          "B4_shots_to_mse_1e-4_mean_row": {
+            "E1_X_readout": 26640.85793214732,
+            "E1p_uncompute_shift_two_circuits": 35402.88497977403,
+            "E2_single_frequency_shift": 38203.75845413273,
+            "E2_two_frequency_shift": 57305.63768119912,
+            "E3_hadamard_test": 39998.31320568113
+          },
+          "B4_ratio_E1_over_E2_valid_rule": 0.6973360478166624,
+          "valid_physical_shift_rule": "single_frequency_2point",
+          "B4_monte_carlo_N4000": {
+            "E1_mse": 0.0006971841167888206,
+            "E1_predicted_mse": 0.0006698812141213713,
+            "E2_mse": 0.0008566062170089666,
+            "E2_predicted_mse": 0.0009491621385866797
+          }
+        }
+      }
+    }
+  },
+  "settings_accounting": {
+    "E1_X_readout": "1 extra measurement setting per layer on the unshifted circuit; both shifted uncompute angles are read from the two X outcomes of the same shots",
+    "E1p": "2 distinct circuits per layer (uncompute angle +-pi/4), Z-basis readout",
+    "E2_single_frequency": "2 distinct circuits per layer (physical PREP and PREP^dagger both shifted by +-pi/8), Z-basis readout",
+    "E2_two_frequency": "4 distinct circuits per layer (shifts +-pi/8, +-3pi/8), Z-basis readout",
+    "E3_hadamard_test": "1 extra control qubit and controlled branch unitaries; strictly more circuit than E1 for the same observable"
+  },
+  "wall_seconds": 8.038676977157593,
+  "public_release_redaction": {
+    "private_provenance_removed": true,
+    "row_or_model_payload_included": false,
+    "reported_scientific_values_changed": false
+  }
+}

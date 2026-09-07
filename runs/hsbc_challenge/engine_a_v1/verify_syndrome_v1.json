@@ -1,0 +1,31 @@
+{
+  "V1_completeness_max_dev": 4.440892098500626e-16,
+  "V2_flag_consistency_max_dev": 0.0,
+  "V3_circuit_block_vector_max_dev": 1.2000592308113571e-13,
+  "V3_circuit_pattern_prob_max_dev": 4.118927421359331e-14,
+  "V4_sector_derivative_identity_max_dev": 8.582937747229195e-17,
+  "V5_dephased_numeric_vs_formula_max_dev": 1.6653345369377348e-16,
+  "V5_dephased_data_independence_spread": 0.0,
+  "V6_rows": 2000,
+  "V6_row_sum_max_dev": 1.5543122344752192e-15,
+  "V6_us_per_tx": 52.263855934143066,
+  "V6_pattern_prob_ranges": {
+    "pattern_00": [
+      0.23645266414474464,
+      0.9444969308910235
+    ],
+    "pattern_01": [
+      0.04960759388714777,
+      0.3342833310431603
+    ],
+    "pattern_10": [
+      0.0038996525809033883,
+      0.20176119168327913
+    ],
+    "pattern_11": [
+      0.0009122918173106473,
+      0.2516766770340459
+    ]
+  },
+  "wall_seconds": 3.701568841934204
+}

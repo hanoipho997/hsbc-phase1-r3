@@ -1,0 +1,6 @@
+# Top-level environment pins for the Braket local density-matrix referee.
+# This is not a complete transitive lock. Record a fresh `pip freeze` in the
+# run directory before any managed-simulator or QPU execution.
+amazon-braket-sdk==1.127.0
+amazon-braket-default-simulator==1.40.1.post0
+numpy==2.5.2
